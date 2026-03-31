@@ -1,0 +1,641 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CogNative | Build a smarter mind</title>
+  <meta
+    name="description"
+    content="CogNative is a write-first intelligence system that strengthens how you think, decide, and execute."
+  />
+  <meta property="og:title" content="CogNative | Build a smarter mind" />
+  <meta
+    property="og:description"
+    content="A write-first intelligence system that strengthens how you think, decide, and execute."
+  />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#061827" />
+
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet"
+  />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: "#061827",
+            surface: "#0F172A",
+            mint: "#00E5A0",
+            cyan: "#00B4D8",
+            violet: "#7C3AED",
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #061827;
+      color: #E2E8F0;
+    }
+
+    .font-heading {
+      font-family: "Syne", sans-serif;
+    }
+
+    .font-body {
+      font-family: "DM Sans", sans-serif;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: .4; }
+      50% { opacity: .8; }
+    }
+
+    @keyframes draw-line {
+      from { stroke-dashoffset: 1000; }
+      to { stroke-dashoffset: 0; }
+    }
+
+    @keyframes fade-up {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
+    }
+
+    .anim-float {
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .anim-float-delay {
+      animation: float 6s ease-in-out 2s infinite;
+    }
+
+    .anim-pulse {
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    .anim-draw {
+      stroke-dasharray: 1000;
+      animation: draw-line 3s ease forwards;
+    }
+
+    .fade-up {
+      animation: fade-up .8s ease both;
+    }
+
+    .fade-up-d1 {
+      animation: fade-up .8s .15s ease both;
+    }
+
+    .fade-up-d2 {
+      animation: fade-up .8s .3s ease both;
+    }
+
+    .fade-up-d3 {
+      animation: fade-up .8s .45s ease both;
+    }
+
+    .fade-up-d4 {
+      animation: fade-up .8s .6s ease both;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #00E5A0, #00B4D8, #7C3AED);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .shimmer-border {
+      position: relative;
+    }
+
+    .shimmer-border::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(90deg, transparent, #00E5A0, #7C3AED, transparent);
+      background-size: 200% 100%;
+      animation: shimmer 4s linear infinite;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    .neural-grid {
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(0,229,160,.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(124,58,237,.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(0,180,216,.04) 0%, transparent 60%);
+    }
+
+    .card-glow:hover {
+      box-shadow: 0 0 40px rgba(0,229,160,.12), 0 0 80px rgba(124,58,237,.06);
+      transform: translateY(-4px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #00E5A0, #00B4D8);
+      transition: all .3s ease;
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 30px rgba(0,229,160,.4);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      border: 1px solid rgba(0,229,160,.3);
+      transition: all .3s ease;
+    }
+
+    .btn-secondary:hover {
+      border-color: #00E5A0;
+      background: rgba(0,229,160,.08);
+    }
+
+    .section-reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all .7s ease;
+    }
+
+    .section-reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="h-full font-body">
+  <div id="app" class="w-full h-full overflow-auto neural-grid">
+    <nav class="w-full px-6 py-5 flex items-center justify-between max-w-7xl mx-auto fade-up" role="navigation">
+      <div class="flex items-center gap-2">
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" stroke="url(#ng)" stroke-width="2" class="anim-draw"></circle>
+          <circle cx="16" cy="12" r="3" fill="#00E5A0" class="anim-pulse"></circle>
+          <circle cx="10" cy="20" r="2" fill="#00B4D8" opacity=".7"></circle>
+          <circle cx="22" cy="20" r="2" fill="#7C3AED" opacity=".7"></circle>
+          <line x1="16" y1="12" x2="10" y2="20" stroke="#00E5A0" stroke-width="1" opacity=".4"></line>
+          <line x1="16" y1="12" x2="22" y2="20" stroke="#7C3AED" stroke-width="1" opacity=".4"></line>
+          <defs>
+            <linearGradient id="ng" x1="0" y1="0" x2="32" y2="32">
+              <stop stop-color="#00E5A0"></stop>
+              <stop offset="1" stop-color="#7C3AED"></stop>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="font-heading font-bold text-xl text-white">CogNative</span>
+      </div>
+      <a href="#final-cta" class="hidden sm:inline-block text-sm text-mint/80 hover:text-mint transition">
+        Get Early Access →
+      </a>
+    </nav>
+
+    <header class="w-full max-w-5xl mx-auto px-6 pt-16 pb-24 text-center relative">
+      <div class="absolute top-10 left-10 w-64 h-64 rounded-full bg-mint/5 blur-3xl anim-float pointer-events-none"></div>
+      <div class="absolute bottom-10 right-10 w-48 h-48 rounded-full bg-violet/8 blur-3xl anim-float-delay pointer-events-none"></div>
+
+      <p class="fade-up text-mint/70 font-heading text-sm tracking-widest uppercase mb-6">
+        AI-Powered Intelligence Development
+      </p>
+
+      <h1 class="fade-up-d1 font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl lg:text-7xl leading-tight text-white mb-6">
+        Build a smarter mind -<br />
+        <span class="gradient-text">not just faster output.</span>
+      </h1>
+
+      <p class="fade-up-d2 max-w-2xl mx-auto text-base sm:text-lg text-slate-400 leading-relaxed mb-4">
+        A write-first intelligence system that strengthens how you think, decide, and execute.
+      </p>
+
+      <p class="fade-up-d2 max-w-2xl mx-auto text-sm sm:text-base text-slate-500 leading-relaxed mb-10">
+        You think first. CogNative guides, challenges, and structures your reasoning.
+      </p>
+
+      <div class="fade-up-d3 flex flex-wrap justify-center gap-4">
+        <a href="#final-cta" class="btn-primary font-heading font-semibold text-navy px-8 py-3.5 rounded-full text-sm sm:text-base inline-block">
+          Begin Thinking →
+        </a>
+        <a href="#solution" class="btn-secondary font-heading font-medium text-mint/90 px-8 py-3.5 rounded-full text-sm sm:text-base flex items-center gap-2">
+          <i data-lucide="play-circle" style="width:18px;height:18px;"></i>
+          See How It Works
+        </a>
+      </div>
+
+      <div class="fade-up-d4 mt-16 mx-auto max-w-3xl shimmer-border rounded-2xl overflow-hidden">
+        <div class="bg-surface/80 backdrop-blur-sm p-6 sm:p-8 rounded-2xl">
+          <svg viewBox="0 0 700 260" class="w-full" fill="none" aria-hidden="true">
+            <circle cx="100" cy="80" r="20" fill="#00E5A0" opacity=".15"></circle>
+            <circle cx="100" cy="80" r="8" fill="#00E5A0" class="anim-pulse"></circle>
+            <circle cx="250" cy="40" r="16" fill="#00B4D8" opacity=".12"></circle>
+            <circle cx="250" cy="40" r="6" fill="#00B4D8" class="anim-pulse"></circle>
+            <circle cx="250" cy="120" r="16" fill="#7C3AED" opacity=".12"></circle>
+            <circle cx="250" cy="120" r="6" fill="#7C3AED"></circle>
+            <circle cx="400" cy="80" r="22" fill="#00E5A0" opacity=".1"></circle>
+            <circle cx="400" cy="80" r="9" fill="#00E5A0"></circle>
+            <circle cx="550" cy="50" r="14" fill="#00B4D8" opacity=".1"></circle>
+            <circle cx="550" cy="50" r="5" fill="#00B4D8"></circle>
+            <circle cx="550" cy="110" r="14" fill="#7C3AED" opacity=".1"></circle>
+            <circle cx="550" cy="110" r="5" fill="#7C3AED"></circle>
+
+            <line x1="108" y1="80" x2="234" y2="40" stroke="#00E5A0" stroke-width="1" opacity=".3" class="anim-draw"></line>
+            <line x1="108" y1="80" x2="234" y2="120" stroke="#7C3AED" stroke-width="1" opacity=".3" class="anim-draw"></line>
+            <line x1="266" y1="40" x2="378" y2="80" stroke="#00B4D8" stroke-width="1" opacity=".3" class="anim-draw"></line>
+            <line x1="266" y1="120" x2="378" y2="80" stroke="#7C3AED" stroke-width="1" opacity=".3" class="anim-draw"></line>
+            <line x1="422" y1="80" x2="536" y2="50" stroke="#00E5A0" stroke-width="1" opacity=".3" class="anim-draw"></line>
+            <line x1="422" y1="80" x2="536" y2="110" stroke="#7C3AED" stroke-width="1" opacity=".3" class="anim-draw"></line>
+
+            <rect x="50" y="170" width="180" height="70" rx="10" fill="#0F172A" stroke="#00E5A0" stroke-width="1" opacity=".5"></rect>
+            <text x="70" y="195" fill="#64748B" font-size="10" font-family="'DM Sans'">Raw Thought Input</text>
+            <path d="M80 215 Q95 205 110 218 Q125 230 140 212 Q155 200 175 215" stroke="#00E5A0" stroke-width="1.5" fill="none" opacity=".6" class="anim-draw"></path>
+
+            <path d="M240 205 L270 205" stroke="#00E5A0" stroke-width="1.5" opacity=".5" marker-end="url(#arrowhead)"></path>
+            <defs>
+              <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                <path d="M0 0 L8 3 L0 6" fill="#00E5A0" opacity=".5"></path>
+              </marker>
+            </defs>
+
+            <rect x="280" y="170" width="180" height="70" rx="10" fill="#0F172A" stroke="#00B4D8" stroke-width="1" opacity=".5"></rect>
+            <text x="300" y="195" fill="#64748B" font-size="10" font-family="'DM Sans'">Structured Intelligence</text>
+            <rect x="300" y="208" width="60" height="6" rx="3" fill="#00B4D8" opacity=".4"></rect>
+            <rect x="370" y="208" width="40" height="6" rx="3" fill="#7C3AED" opacity=".4"></rect>
+            <rect x="300" y="220" width="80" height="6" rx="3" fill="#00E5A0" opacity=".3"></rect>
+
+            <rect x="500" y="170" width="160" height="70" rx="10" fill="#0F172A" stroke="#7C3AED" stroke-width="1" opacity=".5"></rect>
+            <text x="520" y="195" fill="#64748B" font-size="10" font-family="'DM Sans'">Decision Map</text>
+            <circle cx="545" cy="220" r="4" fill="#7C3AED" opacity=".6"></circle>
+            <circle cx="575" cy="210" r="3" fill="#00E5A0" opacity=".6"></circle>
+            <circle cx="575" cy="230" r="3" fill="#00B4D8" opacity=".6"></circle>
+            <circle cx="610" cy="220" r="4" fill="#00E5A0" opacity=".6"></circle>
+            <line x1="549" y1="220" x2="572" y2="210" stroke="#fff" stroke-width=".5" opacity=".3"></line>
+            <line x1="549" y1="220" x2="572" y2="230" stroke="#fff" stroke-width=".5" opacity=".3"></line>
+            <line x1="578" y1="210" x2="606" y2="220" stroke="#fff" stroke-width=".5" opacity=".3"></line>
+            <line x1="578" y1="230" x2="606" y2="220" stroke="#fff" stroke-width=".5" opacity=".3"></line>
+          </svg>
+        </div>
+      </div>
+    </header>
+
+    <section class="section-reveal w-full max-w-5xl mx-auto px-6 py-20">
+      <p class="text-violet font-heading text-sm tracking-widest uppercase mb-4">The Problem</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl text-white mb-8">
+        AI made information instant -<br />
+        but not intelligence.
+      </h2>
+
+      <div class="grid sm:grid-cols-3 gap-6 mb-6">
+        <div class="bg-surface/60 rounded-xl p-6 border border-white/5">
+          <div class="w-10 h-10 rounded-lg bg-violet/10 flex items-center justify-center mb-4">
+            <i data-lucide="compass" style="width:20px;height:20px;color:#7C3AED;"></i>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Students are choosing the <strong class="text-white">wrong paths</strong>.
+          </p>
+        </div>
+
+        <div class="bg-surface/60 rounded-xl p-6 border border-white/5">
+          <div class="w-10 h-10 rounded-lg bg-cyan/10 flex items-center justify-center mb-4">
+            <i data-lucide="zap" style="width:20px;height:20px;color:#00B4D8;"></i>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Professionals are making <strong class="text-white">reactive decisions</strong>.
+          </p>
+        </div>
+
+        <div class="bg-surface/60 rounded-xl p-6 border border-white/5">
+          <div class="w-10 h-10 rounded-lg bg-mint/10 flex items-center justify-center mb-4">
+            <i data-lucide="bot" style="width:20px;height:20px;color:#00E5A0;"></i>
+          </div>
+          <p class="text-slate-300 text-sm leading-relaxed">
+            Most tools optimize <strong class="text-white">output - not intelligence</strong>.
+          </p>
+        </div>
+      </div>
+
+      <p class="text-slate-500 text-sm italic border-l-2 border-violet/40 pl-4">
+        Access to information has never been higher - but clarity, direction, and decision quality are declining.
+      </p>
+      <p class="text-slate-500 text-sm italic border-l-2 border-violet/40 pl-4 mt-4">
+        Even worse, most tools only see polished input, not how decisions are actually formed.
+      </p>
+    </section>
+
+    <section id="solution" class="section-reveal w-full max-w-5xl mx-auto px-6 py-20">
+      <p class="text-mint font-heading text-sm tracking-widest uppercase mb-4">The Solution</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl text-white mb-6">
+        A new system for<br />
+        <span class="gradient-text">developing intelligence at runtime.</span>
+      </h2>
+
+      <p class="text-slate-400 text-base mb-8 max-w-2xl">
+        CogNative is the first platform designed to develop human intelligence at runtime:
+      </p>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+        <div class="bg-surface/60 rounded-xl p-5 border border-mint/10 text-center card-glow transition-all duration-300 cursor-default">
+          <i data-lucide="brain" style="width:28px;height:28px;color:#00E5A0;" class="mx-auto mb-3"></i>
+          <p class="text-white font-heading font-semibold text-sm">How you think</p>
+        </div>
+
+        <div class="bg-surface/60 rounded-xl p-5 border border-cyan/10 text-center card-glow transition-all duration-300 cursor-default">
+          <i data-lucide="book-open" style="width:28px;height:28px;color:#00B4D8;" class="mx-auto mb-3"></i>
+          <p class="text-white font-heading font-semibold text-sm">How you learn</p>
+        </div>
+
+        <div class="bg-surface/60 rounded-xl p-5 border border-violet/10 text-center card-glow transition-all duration-300 cursor-default">
+          <i data-lucide="git-branch" style="width:28px;height:28px;color:#7C3AED;" class="mx-auto mb-3"></i>
+          <p class="text-white font-heading font-semibold text-sm">How you decide</p>
+        </div>
+
+        <div class="bg-surface/60 rounded-xl p-5 border border-mint/10 text-center card-glow transition-all duration-300 cursor-default">
+          <i data-lucide="target" style="width:28px;height:28px;color:#00E5A0;" class="mx-auto mb-3"></i>
+          <p class="text-white font-heading font-semibold text-sm">How you execute</p>
+        </div>
+      </div>
+
+      <p class="text-slate-500 text-sm">
+        Not just answers. Not just automation.
+        <strong class="text-slate-300">A system that strengthens the person behind the output.</strong>
+      </p>
+    </section>
+
+    <section class="section-reveal w-full max-w-5xl mx-auto px-6 py-20">
+      <div class="shimmer-border rounded-2xl overflow-hidden">
+        <div class="bg-surface/70 backdrop-blur-sm p-8 sm:p-12 rounded-2xl">
+          <p class="text-cyan font-heading text-sm tracking-widest uppercase mb-4">Cognitive Capture</p>
+          <h2 class="font-heading font-bold text-3xl sm:text-4xl text-white mb-6">
+            Capture thinking<br />
+            <span class="gradient-text">before it's filtered.</span>
+          </h2>
+
+          <div class="grid md:grid-cols-2 gap-10 items-start">
+            <div>
+              <p class="text-slate-400 text-base leading-relaxed mb-6">
+                Most AI tools analyze what you type. CogNative captures
+                <strong class="text-white">how you think</strong> - before it's optimized.
+              </p>
+
+              <p class="text-slate-400 text-base leading-relaxed mb-8">
+                With handwriting and free-form input, CogNative transforms raw thought into structured intelligence.
+              </p>
+
+              <div class="space-y-3">
+                <div class="flex items-start gap-3">
+                  <div class="w-5 h-5 rounded-full bg-mint/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i data-lucide="check" style="width:12px;height:12px;color:#00E5A0;"></i>
+                  </div>
+                  <p class="text-slate-300 text-sm">Capture raw thinking before it's optimized</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-5 h-5 rounded-full bg-cyan/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i data-lucide="check" style="width:12px;height:12px;color:#00B4D8;"></i>
+                  </div>
+                  <p class="text-slate-300 text-sm">Surface reasoning patterns and blind spots</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-5 h-5 rounded-full bg-violet/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i data-lucide="check" style="width:12px;height:12px;color:#7C3AED;"></i>
+                  </div>
+                  <p class="text-slate-300 text-sm">Transform ideas into structured decisions</p>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-5 h-5 rounded-full bg-mint/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <i data-lucide="check" style="width:12px;height:12px;color:#00E5A0;"></i>
+                  </div>
+                  <p class="text-slate-300 text-sm">Strengthen clarity before execution</p>
+                </div>
+              </div>
+
+              <p class="text-slate-500 text-sm italic mt-6 border-l-2 border-cyan/40 pl-4">
+                This is where real intelligence is formed - before the output.
+              </p>
+            </div>
+
+            <div class="relative">
+              <svg viewBox="0 0 320 300" class="w-full" fill="none" aria-hidden="true">
+                <rect x="10" y="10" width="300" height="130" rx="12" fill="#0A1628" stroke="#00E5A0" stroke-width="1" opacity=".6"></rect>
+                <text x="30" y="38" fill="#475569" font-size="11" font-family="'DM Sans'">✍️ Raw Thought</text>
+                <path d="M30 65 Q50 50 70 68 Q90 85 110 60 Q130 40 155 70 Q175 90 200 55 Q220 35 250 65" stroke="#00E5A0" stroke-width="2" fill="none" opacity=".7" class="anim-draw"></path>
+                <path d="M30 95 Q60 80 90 100 Q120 115 150 88 Q180 65 210 95 Q230 110 260 85" stroke="#00B4D8" stroke-width="1.5" fill="none" opacity=".5" class="anim-draw" style="animation-delay:.5s"></path>
+                <path d="M30 118 Q55 108 80 120 Q110 130 140 112" stroke="#7C3AED" stroke-width="1.5" fill="none" opacity=".4" class="anim-draw" style="animation-delay:1s"></path>
+
+                <path d="M160 150 L160 175" stroke="#00E5A0" stroke-width="1.5" opacity=".5" marker-end="url(#arrowhead2)"></path>
+                <defs>
+                  <marker id="arrowhead2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                    <path d="M0 0 L8 3 L0 6" fill="#00E5A0" opacity=".5"></path>
+                  </marker>
+                </defs>
+
+                <rect x="10" y="185" width="300" height="105" rx="12" fill="#0A1628" stroke="#7C3AED" stroke-width="1" opacity=".6"></rect>
+                <text x="30" y="212" fill="#475569" font-size="11" font-family="'DM Sans'">🧠 Structured Intelligence</text>
+                <rect x="30" y="225" width="100" height="8" rx="4" fill="#00E5A0" opacity=".4"></rect>
+                <rect x="140" y="225" width="60" height="8" rx="4" fill="#7C3AED" opacity=".35"></rect>
+                <rect x="210" y="225" width="75" height="8" rx="4" fill="#00B4D8" opacity=".3"></rect>
+                <rect x="30" y="242" width="70" height="8" rx="4" fill="#00B4D8" opacity=".3"></rect>
+                <rect x="110" y="242" width="90" height="8" rx="4" fill="#00E5A0" opacity=".3"></rect>
+                <rect x="30" y="259" width="120" height="8" rx="4" fill="#7C3AED" opacity=".25"></rect>
+                <rect x="160" y="259" width="50" height="8" rx="4" fill="#00E5A0" opacity=".25"></rect>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-reveal w-full max-w-5xl mx-auto px-6 py-20">
+      <p class="text-mint font-heading text-sm tracking-widest uppercase mb-4">Core Features</p>
+
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-surface/60 rounded-xl p-7 border border-white/5 card-glow transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-mint/15 to-cyan/10 flex items-center justify-center mb-5">
+            <i data-lucide="fingerprint" style="width:24px;height:24px;color:#00E5A0;"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-white mb-2">CogNative Profile</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Understand your thinking patterns, strengths, and blind spots.
+          </p>
+        </div>
+
+        <div class="bg-surface/60 rounded-xl p-7 border border-white/5 card-glow transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan/15 to-violet/10 flex items-center justify-center mb-5">
+            <i data-lucide="activity" style="width:24px;height:24px;color:#00B4D8;"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-white mb-2">Learning Runtime</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Learn through guided thinking - not passive content.
+          </p>
+        </div>
+
+        <div class="bg-surface/60 rounded-xl p-7 border border-white/5 card-glow transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-violet/15 to-mint/10 flex items-center justify-center mb-5">
+            <i data-lucide="git-branch" style="width:24px;height:24px;color:#7C3AED;"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-white mb-2">Decision Engine</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Make high-quality decisions with structured reasoning.
+          </p>
+        </div>
+
+        <div class="bg-surface/60 rounded-xl p-7 border border-white/5 card-glow transition-all duration-300">
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-mint/15 to-violet/10 flex items-center justify-center mb-5">
+            <i data-lucide="trending-up" style="width:24px;height:24px;color:#00E5A0;"></i>
+          </div>
+          <h3 class="font-heading font-bold text-lg text-white mb-2">Execution Tracking</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">
+            Turn thinking into measurable outcomes.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-reveal w-full max-w-5xl mx-auto px-6 py-20">
+      <p class="text-violet font-heading text-sm tracking-widest uppercase mb-4">Why It's Different</p>
+      <h2 class="font-heading font-bold text-3xl sm:text-4xl text-white mb-10">
+        Most AI tools generate answers.<br />
+        <span class="gradient-text">CogNative generates thinking.</span>
+      </h2>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-surface/60 rounded-xl p-8 border border-red-500/10">
+          <h3 class="font-heading font-semibold text-white mb-5 flex items-center gap-2">
+            <i data-lucide="x-circle" style="width:20px;height:20px;color:#f87171;"></i>
+            This is not:
+          </h3>
+          <div class="space-y-3">
+            <p class="text-slate-400 text-sm flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-red-400/40 flex-shrink-0"></span>a learning app
+            </p>
+            <p class="text-slate-400 text-sm flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-red-400/40 flex-shrink-0"></span>a productivity tool
+            </p>
+            <p class="text-slate-400 text-sm flex items-center gap-3">
+              <span class="w-1.5 h-1.5 rounded-full bg-red-400/40 flex-shrink-0"></span>an AI assistant
+            </p>
+          </div>
+        </div>
+
+        <div class="bg-surface/60 rounded-xl p-8 border border-mint/10">
+          <h3 class="font-heading font-semibold text-white mb-5 flex items-center gap-2">
+            <i data-lucide="check-circle" style="width:20px;height:20px;color:#00E5A0;"></i>
+            This is:
+          </h3>
+          <p class="text-xl font-heading font-bold gradient-text leading-relaxed">
+            A system that forces better thinking - before action.
+          </p>
+          <p class="text-slate-400 text-sm mt-4 leading-relaxed">
+            CogNative analyzes thinking, not just output, helping people perform better in real-world decisions and execution.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-reveal w-full max-w-5xl mx-auto px-6 py-16">
+      <div class="bg-surface/40 rounded-2xl p-8 sm:p-10 border border-white/5 text-center">
+        <p class="text-mint/60 font-heading text-sm tracking-widest uppercase mb-4">Built With Authority</p>
+        <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+          Built by a leader in AI governance, risk, and decision systems with
+          <strong class="text-white">25+ years</strong> of experience designing enterprise intelligence frameworks.
+        </p>
+        <p class="text-slate-500 text-sm mt-4">
+          Designed for the future of learning, work, and human potential.
+        </p>
+      </div>
+    </section>
+
+    <section id="final-cta" class="section-reveal w-full max-w-5xl mx-auto px-6 py-24 text-center relative">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full bg-mint/5 blur-3xl pointer-events-none"></div>
+
+      <h2 class="font-heading font-extrabold text-3xl sm:text-4xl md:text-5xl text-white mb-4 relative">
+        Start thinking.<br />
+        Build your <span class="gradient-text">cognitive edge.</span>
+      </h2>
+
+      <a href="mailto:hello@cognative.app?subject=CogNative Early Access" class="btn-primary font-heading font-semibold text-navy px-10 py-4 rounded-full text-base sm:text-lg mt-8 relative inline-block">
+        Get Early Access
+      </a>
+
+      <p class="text-slate-500 text-sm mt-5 relative">
+        For students, professionals, and future-ready thinkers.
+      </p>
+    </section>
+
+    <footer class="w-full max-w-5xl mx-auto px-6 py-10 border-t border-white/5" role="contentinfo">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <svg width="20" height="20" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <circle cx="16" cy="16" r="14" stroke="url(#ng2)" stroke-width="2"></circle>
+            <circle cx="16" cy="12" r="3" fill="#00E5A0"></circle>
+            <defs>
+              <linearGradient id="ng2" x1="0" y1="0" x2="32" y2="32">
+                <stop stop-color="#00E5A0"></stop>
+                <stop offset="1" stop-color="#7C3AED"></stop>
+              </linearGradient>
+            </defs>
+          </svg>
+          <span class="font-heading font-semibold text-white text-sm">CogNative</span>
+        </div>
+        <p class="text-slate-500 text-xs text-center sm:text-right">
+          AI-powered intelligence development for better thinking, stronger decisions, and real-world execution.
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll(".section-reveal").forEach((el) => observer.observe(el));
+
+    lucide.createIcons();
+  </script>
+</body>
+</html>
