@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CogNative Thinking Session</title>
+  <meta
+    name="description"
+    content="A write-first experience that turns raw thought into structured intelligence."
+  />
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    body {
+      background: #061827;
+      color: #E2E8F0;
+      font-family: "DM Sans", sans-serif;
+    }
+    .font-heading {
+      font-family: "Syne", sans-serif;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, #00E5A0, #00B4D8, #7C3AED);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .card {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 0 30px rgba(0,0,0,0.18);
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #00E5A0, #00B4D8);
+      color: #061827;
+      font-weight: 700;
+      border: none;
+      border-radius: 9999px;
+      padding: 12px 22px;
+      cursor: pointer;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: #E2E8F0;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 9999px;
+      padding: 12px 22px;
+      cursor: pointer;
+    }
+    textarea {
+      width: 100%;
+      min-height: 140px;
+      background: rgba(0,0,0,0.25);
+      color: #E2E8F0;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 12px;
+      padding: 14px;
+      resize: vertical;
+      font: inherit;
+    }
+    .hidden-step {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <main style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:32px;">
+      <a href="/" style="color:#9CA3AF; text-decoration:none;">← Back to home</a>
+      <div style="color:#00E5A0; font-size:14px;">CogNative Demo</div>
+    </div>
+
+    <header style="text-align:center; margin-bottom:32px;">
+      <h1 class="font-heading" style="font-size: clamp(2rem, 5vw, 4rem); margin:0 0 12px 0;">
+        CogNative <span class="gradient-text">Thinking Session</span>
+      </h1>
+      <p style="max-width:700px; margin:0 auto; color:#94A3B8; font-size:18px;">
+        A write-first experience that turns raw thought into structured intelligence.
+      </p>
+    </header>
+
+    <section id="step-input" class="card">
+      <h2 class="font-heading" style="margin-top:0;">Start with a real question</h2>
+      <p style="color:#94A3B8;">What are you trying to figure out?</p>
+      <textarea id="userInput" placeholder="I need help deciding what college baseball path is right for me..."></textarea>
+      <div style="margin-top:16px;">
+        <button class="btn-primary" onclick="goToWrite()">Begin Session</button>
+      </div>
+    </section>
+
+    <section id="step-write" class="card hidden-step">
+      <h2 class="font-heading" style="margin-top:0;">Write what you already know</h2>
+      <div id="writeQuestions" style="color:#94A3B8; margin-bottom:16px;"></div>
+      <textarea id="writing" placeholder="Write what you already know in your own words..."></textarea>
+      <div style="margin-top:16px;">
+        <button class="btn-primary" onclick="goToSocratic()">Deepen Thinking</button>
+      </div>
+    </section>
+
+    <section id="step-socratic" class="card hidden-step">
+      <h2 class="font-heading" style="margin-top:0;">Refine your thinking</h2>
+      <div id="socraticQuestions" style="color:#94A3B8; margin-bottom:16px;"></div>
+      <textarea id="reflection" placeholder="Refine your thinking here..."></textarea>
+      <div style="margin-top:16px;">
+        <button class="btn-primary" onclick="goToInsight()">Reveal Insight</button>
+      </div>
+    </section>
+
+    <section id="step-insight" class="card hidden-step">
+      <h2 class="font-heading" style="margin-top:0;">Structured Insight</h2>
+
+      <div style="margin-bottom:18px; padding:16px; border-radius:12px; background:rgba(0,0,0,0.28); border:1px solid rgba(255,255,255,0.08);">
+        <p style="margin:0 0 8px 0; color:#64748B; font-size:12px;">Raw Thought</p>
+        <p id="rawThought" style="margin:0; color:#D1D5DB; font-style:italic; line-height:1.8;"></p>
+      </div>
+
+      <div style="text-align:center; color:#38BDF8; font-size:12px; margin:18px 0;">
+        ↓ transformed into structured intelligence ↓
+      </div>
+
+      <div style="margin-bottom:18px; padding:16px; border-radius:12px; background:rgba(0,0,0,0.18); border:1px solid rgba(59,130,246,0.22);">
+        <p style="margin:0 0 8px 0; color:#38BDF8; font-size:12px;">Cognitive Signals</p>
+        <ul id="signalsList" style="margin:0; padding-left:18px; color:#D1D5DB; line-height:1.8;"></ul>
+      </div>
+
+      <div style="margin-bottom:18px; padding:16px; border-radius:12px; background:rgba(0,0,0,0.18); border:1px solid rgba(59,130,246,0.22);">
+        <p style="margin:0 0 8px 0; color:#38BDF8; font-size:12px;">Suggested Paths</p>
+        <ul id="pathsList" style="margin:0; padding-left:18px; color:#D1D5DB; line-height:1.8;"></ul>
+      </div>
+
+      <div style="margin-bottom:18px; padding:16px; border-radius:12px; background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.08);">
+        <p style="margin:0 0 8px 0; color:#64748B; font-size:12px;">Insight Summary</p>
+        <p id="summaryText" style="margin:0; color:#D1D5DB; line-height:1.8;"></p>
+      </div>
+
+      <button class="btn-primary" onclick="resetSession()">Start New Session</button>
+    </section>
+  </main>
+
+  <script>
+    function showStep(stepId) {
+      document.getElementById("step-input").classList.add("hidden-step");
+      document.getElementById("step-write").classList.add("hidden-step");
+      document.getElementById("step-socratic").classList.add("hidden-step");
+      document.getElementById("step-insight").classList.add("hidden-step");
+      document.getElementById(stepId).classList.remove("hidden-step");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function detectTopic(input) {
+      const text = input.toLowerCase();
+
+      if (
+        text.includes("baseball") ||
+        text.includes("sport") ||
+        text.includes("athlete") ||
+        text.includes("recruiting")
+      ) return "sports";
+
+      if (
+        text.includes("career") ||
+        text.includes("job") ||
+        text.includes("major") ||
+        text.includes("profession") ||
+        text.includes("work")
+      ) return "career";
+
+      if (
+        text.includes("school") ||
+        text.includes("college") ||
+        text.includes("study") ||
+        text.includes("class") ||
+        text.includes("learn")
+      ) return "education";
+
+      return "general";
+    }
+
+    function getWriteQuestions(topic) {
+      if (topic === "sports") {
+        return [
+          "What do you want most out of this opportunity?",
+          "What are your strengths as a player or competitor?",
+          "What environment helps you perform at your best?"
+        ];
+      }
+      if (topic === "career") {
+        return [
+          "What kind of work energizes you?",
+          "What are you naturally good at?",
+          "What do you not want your day-to-day life to feel like?"
+        ];
+      }
+      if (topic === "education") {
+        return [
+          "What are you trying to understand or decide?",
+          "What do you already know about this subject?",
+          "What part feels unclear or difficult right now?"
+        ];
+      }
+      return [
+        "What are you really trying to figure out?",
+        "What do you already know?",
+        "What feels unclear, difficult, or unresolved?"
+      ];
+    }
+
+    function getSocraticQuestions(topic) {
+      if (topic === "sports") {
+        return [
+          "Why does this goal matter to you personally?",
+          "What tradeoffs are you willing to make to pursue it?",
+          "What kind of team, coach, or culture would bring out your best?"
+        ];
+      }
+      if (topic === "career") {
+        return [
+          "Why do you think those interests matter to you?",
+          "When have you felt most engaged or alive in your work or learning?",
+          "What kind of problems do you enjoy solving repeatedly?"
+        ];
+      }
+      if (topic === "education") {
+        return [
+          "What part of this makes sense to you already?",
+          "What assumptions are you making right now?",
+          "How would you explain this in your own words?"
+        ];
+      }
+      return [
+        "Why do you think this matters?",
+        "What patterns do you notice in your own response?",
+        "What would greater clarity look like here?"
+      ];
+    }
+
+    function generateSignals(topic, writing, reflection) {
+      const combined = (writing + " " + reflection).toLowerCase();
+      const signals = [];
+
+      if (combined.includes("people") || combined.includes("team") || combined.includes("helping") || combined.includes("lead")) {
+        signals.push("Strong people and relationship orientation");
+      }
+      if (combined.includes("strategy") || combined.includes("plan") || combined.includes("vision") || combined.includes("organize")) {
+        signals.push("Strategic and structured thinking tendency");
+      }
+      if (combined.includes("compete") || combined.includes("win") || combined.includes("perform") || combined.includes("athlete")) {
+        signals.push("High performance and competitive drive");
+      }
+      if (combined.includes("psychology") || combined.includes("behavior") || combined.includes("mind")) {
+        signals.push("Interest in human behavior and motivation");
+      }
+      if (combined.includes("repetitive") || combined.includes("routine") || combined.includes("boring")) {
+        signals.push("Low tolerance for repetitive environments");
+      }
+      if (combined.includes("clarity") || combined.includes("purpose") || combined.includes("direction")) {
+        signals.push("Strong need for clarity, purpose, and alignment");
+      }
+
+      if (signals.length === 0) {
+        if (topic === "sports") {
+          signals.push("You are exploring identity, fit, and performance environment");
+          signals.push("You appear motivated by growth, opportunity, and alignment");
+        } else if (topic === "career") {
+          signals.push("You are exploring fit, motivation, and long-term direction");
+          signals.push("You appear to want work that feels aligned, not automatic");
+        } else if (topic === "education") {
+          signals.push("You are trying to turn uncertainty into understanding");
+          signals.push("You appear to learn best through reflection and structured thought");
+        } else {
+          signals.push("You are looking for deeper clarity, not surface-level answers");
+          signals.push("You appear willing to reflect in order to make a better decision");
+        }
+      }
+
+      return signals.slice(0, 4);
+    }
+
+    function generatePaths(topic, writing, reflection) {
+      const combined = (writing + " " + reflection).toLowerCase();
+
+      if (topic === "sports") {
+        const paths = [
+          "College program environments that match your performance style",
+          "Athletic pathways that balance competition, development, and fit",
+          "Roles connected to sports leadership, team culture, or sports management"
+        ];
+        if (combined.includes("lead")) {
+          paths.unshift("Team-centered environments where leadership matters");
+        }
+        return paths.slice(0, 4);
+      }
+
+      if (topic === "career") {
+        const paths = [
+          "Roles involving people, leadership, and communication",
+          "Behavioral, psychology, or coaching-related paths",
+          "Strategy, operations, or business-facing problem-solving roles"
+        ];
+        if (combined.includes("law")) {
+          paths.unshift("Law, advocacy, or policy-adjacent environments");
+        }
+        return paths.slice(0, 4);
+      }
+
+      if (topic === "education") {
+        return [
+          "A clearer learning path based on what you already understand",
+          "Focused study areas where deeper reasoning is needed",
+          "A more structured way to translate confusion into mastery"
+        ];
+      }
+
+      return [
+        "A clearer direction based on your own words",
+        "Better-fit paths shaped by your motivations and patterns",
+        "A more intentional next step instead of reactive movement"
+      ];
+    }
+
+    function generateSummary(topic) {
+      if (topic === "sports") {
+        return "Your thinking suggests this is not just about playing - it is about finding the right environment, identity fit, and performance path.";
+      }
+      if (topic === "career") {
+        return "Your responses point toward alignment, authenticity, and long-term fit rather than simply choosing the next obvious option.";
+      }
+      if (topic === "education") {
+        return "Your responses show that deeper understanding comes when you externalize what you know first and then build from there.";
+      }
+      return "Your responses show that clarity improves when your thinking is made visible, challenged, and structured.";
+    }
+
+    function goToWrite() {
+      const input = document.getElementById("userInput").value.trim();
+      const topic = detectTopic(input);
+      const questions = getWriteQuestions(topic);
+
+      document.getElementById("writeQuestions").innerHTML = questions.map(q => `<p>${q}</p>`).join("");
+      showStep("step-write");
+    }
+
+    function goToSocratic() {
+      const input = document.getElementById("userInput").value.trim();
+      const topic = detectTopic(input);
+      const questions = getSocraticQuestions(topic);
+
+      document.getElementById("socraticQuestions").innerHTML = questions.map(q => `<p>${q}</p>`).join("");
+      showStep("step-socratic");
+    }
+
+    function goToInsight() {
+      const input = document.getElementById("userInput").value.trim();
+      const writing = document.getElementById("writing").value.trim();
+      const reflection = document.getElementById("reflection").value.trim();
+      const topic = detectTopic(input);
+
+      const signals = generateSignals(topic, writing, reflection);
+      const paths = generatePaths(topic, writing, reflection);
+      const summary = generateSummary(topic);
+
+      document.getElementById("rawThought").textContent = writing || "No initial writing captured yet.";
+      document.getElementById("signalsList").innerHTML = signals.map(s => `<li>${s}</li>`).join("");
+      document.getElementById("pathsList").innerHTML = paths.map(p => `<li>${p}</li>`).join("");
+      document.getElementById("summaryText").textContent = summary;
+
+      showStep("step-insight");
+    }
+
+    function resetSession() {
+      document.getElementById("userInput").value = "";
+      document.getElementById("writing").value = "";
+      document.getElementById("reflection").value = "";
+      showStep("step-input");
+    }
+  </script>
+</body>
+</html>
