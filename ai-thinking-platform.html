@@ -1,1 +1,936 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>What Is an AI Thinking Platform? | COGNATIVE™</title>
+  <meta
+    name="description"
+    content="Learn what an AI Thinking Platform is and why COGNATIVE™ is building a new category around structured reasoning, executive functioning, decision intelligence, and stronger real-world execution."
+  />
+  <meta
+    name="keywords"
+    content="AI thinking platform, decision intelligence platform, executive functioning tools, structured reasoning, cognitive training AI, improve thinking skills, reasoning-first AI, Cognative"
+  />
+  <meta name="theme-color" content="#081120" />
+  <meta property="og:title" content="What Is an AI Thinking Platform? | COGNATIVE™" />
+  <meta
+    property="og:description"
+    content="AI generates output. COGNATIVE™ develops intelligence through structured reasoning, guided thinking, and decision clarity."
+  />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://cognative.app/ai-thinking-platform.html" />
+  <meta property="og:image" content="https://cognative.app/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What Is an AI Thinking Platform? | COGNATIVE™" />
+  <meta
+    name="twitter:description"
+    content="A premium category page explaining why AI Thinking Platforms matter and how COGNATIVE™ is building the intelligence platform category."
+  />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "What Is an AI Thinking Platform?",
+      "description": "An in-depth explanation of the AI Thinking Platform category and how COGNATIVE™ strengthens reasoning, executive functioning, and decision intelligence.",
+      "author": {
+        "@type": "Organization",
+        "name": "COGNATIVE"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "COGNATIVE"
+      },
+      "mainEntityOfPage": "https://cognative.app/ai-thinking-platform.html"
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "COGNATIVE",
+      "applicationCategory": "EducationalApplication",
+      "operatingSystem": "Web",
+      "description": "An AI-powered intelligence platform designed to improve structured reasoning, executive functioning, decision-making, and real-world execution.",
+      "url": "https://cognative.app"
+    }
+  </script>
+  <style>
+    :root {
+      --bg: #06111f;
+      --bg-soft: #0b1930;
+      --panel: rgba(7, 18, 38, 0.78);
+      --panel-strong: rgba(10, 24, 49, 0.94);
+      --line: rgba(120, 157, 219, 0.18);
+      --line-strong: rgba(120, 157, 219, 0.3);
+      --text: #e8f1ff;
+      --muted: #b4c4e2;
+      --soft: #90a6cf;
+      --blue: #5da9ff;
+      --gold: #f0c96a;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 20%, rgba(59, 130, 246, 0.18), transparent 0 34%),
+        radial-gradient(circle at 88% 16%, rgba(240, 201, 106, 0.12), transparent 0 22%),
+        radial-gradient(circle at 65% 72%, rgba(59, 130, 246, 0.1), transparent 0 28%),
+        linear-gradient(180deg, #050d18 0%, #081120 38%, #081425 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    body::before {
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 90px 90px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 90%);
+      opacity: 0.18;
+    }
+
+    body::after {
+      background:
+        linear-gradient(120deg, transparent 0%, rgba(93, 169, 255, 0.06) 36%, transparent 62%),
+        linear-gradient(180deg, transparent 0%, rgba(240, 201, 106, 0.04) 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .page { position: relative; z-index: 1; }
+    .container { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(4, 10, 20, 0.64);
+      border-bottom: 1px solid rgba(120, 157, 219, 0.1);
+    }
+
+    .topbar-inner {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      position: relative;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.22), transparent 0 34%),
+        linear-gradient(135deg, rgba(93, 169, 255, 0.95), rgba(36, 103, 255, 0.88));
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 0 28px rgba(93, 169, 255, 0.35);
+      flex: 0 0 auto;
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: '';
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.88);
+    }
+
+    .brand-mark::before {
+      width: 20px;
+      height: 3px;
+      left: 11px;
+      top: 13px;
+      box-shadow: 0 8px 0 rgba(255,255,255,0.88), 0 16px 0 rgba(255,255,255,0.88);
+    }
+
+    .brand-mark::after {
+      width: 3px;
+      height: 20px;
+      left: 11px;
+      top: 11px;
+    }
+
+    .brand-title {
+      font-size: 0.96rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #f8fbff;
+      white-space: nowrap;
+      display: block;
+    }
+
+    .brand-subtitle {
+      margin-top: 4px;
+      color: var(--soft);
+      font-size: 0.82rem;
+      display: block;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: 0.94rem;
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .nav-link:hover { color: var(--text); background: rgba(93, 169, 255, 0.08); }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+
+    .btn-primary {
+      color: #081120;
+      background: linear-gradient(135deg, #f2d58f, #f0c96a 58%, #dbaf3d);
+      box-shadow: 0 16px 36px rgba(240, 201, 106, 0.26);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(93, 169, 255, 0.08);
+      border-color: rgba(93, 169, 255, 0.2);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    }
+
+    .hero { padding: 74px 0 30px; }
+
+    .hero-card,
+    .section-card,
+    .quote-card,
+    .stat-card,
+    .cta-card,
+    .summary-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(10, 22, 45, 0.82), rgba(8, 18, 36, 0.94));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-card::before,
+    .section-card::before,
+    .quote-card::before,
+    .stat-card::before,
+    .cta-card::before,
+    .summary-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent 28%, transparent 72%, rgba(93,169,255,0.08));
+      pointer-events: none;
+    }
+
+    .hero-card {
+      border-radius: 34px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, 0.92fr);
+      gap: 26px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 201, 106, 0.24);
+      background: rgba(240, 201, 106, 0.08);
+      color: #f5d991;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 20px rgba(240, 201, 106, 0.7);
+    }
+
+    h1, h2, h3, p { margin: 0; }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 5vw, 4.8rem);
+      line-height: 0.96;
+      letter-spacing: -0.05em;
+      max-width: 12ch;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #dbeafe 42%, #71b2ff 78%, #f0c96a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subhead {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.82;
+      max-width: 760px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 26px;
+    }
+
+    .hero-side {
+      display: grid;
+      gap: 14px;
+    }
+
+    .summary-card {
+      border-radius: 24px;
+      padding: 20px;
+    }
+
+    .summary-label {
+      color: #8fb6ff;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .summary-card strong {
+      display: block;
+      color: #ffffff;
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .summary-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .stats {
+      padding: 8px 0 28px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .stat-card {
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.05em;
+      color: #ffffff;
+    }
+
+    .stat-text {
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.94rem;
+    }
+
+    .content {
+      padding: 8px 0 28px;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .article-flow {
+      display: grid;
+      gap: 18px;
+    }
+
+    .section-card {
+      border-radius: 30px;
+      padding: 28px;
+    }
+
+    .section-kicker {
+      color: #8fb6ff;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .section-card h2 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+      color: #ffffff;
+      max-width: 15ch;
+    }
+
+    .section-card p {
+      color: var(--muted);
+      line-height: 1.85;
+      font-size: 1rem;
+      margin-bottom: 14px;
+    }
+
+    .section-card p:last-child { margin-bottom: 0; }
+
+    .bullet-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .bullet-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: #dce9ff;
+      line-height: 1.7;
+      font-size: 0.96rem;
+    }
+
+    .bullet-item::before {
+      content: '•';
+      color: var(--gold);
+      font-size: 1.08rem;
+      line-height: 1.2;
+      margin-top: 2px;
+    }
+
+    .quote-card {
+      border-radius: 30px;
+      padding: 30px;
+    }
+
+    .quote-card p {
+      font-size: clamp(1.18rem, 1.8vw, 1.55rem);
+      line-height: 1.62;
+      color: #f6fbff;
+      letter-spacing: -0.02em;
+    }
+
+    .quote-card strong {
+      display: inline-block;
+      margin-top: 14px;
+      color: #8fb6ff;
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .sidebar {
+      display: grid;
+      gap: 16px;
+      position: sticky;
+      top: 98px;
+    }
+
+    .sidebar-card {
+      border-radius: 26px;
+      padding: 22px;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(10, 22, 45, 0.82), rgba(8, 18, 36, 0.94));
+      box-shadow: var(--shadow);
+    }
+
+    .sidebar-card h3 {
+      color: #ffffff;
+      font-size: 1.04rem;
+      margin-bottom: 12px;
+    }
+
+    .sidebar-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.94rem;
+      margin-bottom: 12px;
+    }
+
+    .sidebar-card p:last-child { margin-bottom: 0; }
+
+    .mini-links {
+      display: grid;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .mini-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,0.07);
+      background: rgba(255,255,255,0.03);
+      color: #dce9ff;
+      font-size: 0.93rem;
+      font-weight: 600;
+      transition: 0.18s ease;
+    }
+
+    .mini-link:hover {
+      border-color: rgba(93,169,255,0.24);
+      background: rgba(93,169,255,0.08);
+    }
+
+    .mini-link::after {
+      content: '↗';
+      color: #8fb6ff;
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      padding: 10px 0 82px;
+    }
+
+    .cta-card {
+      border-radius: 34px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(300px, 0.92fr);
+      gap: 22px;
+      align-items: center;
+    }
+
+    .cta-card h2 {
+      font-size: clamp(2.1rem, 4vw, 3.8rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+      max-width: 12ch;
+    }
+
+    .cta-card p {
+      color: var(--muted);
+      line-height: 1.82;
+      font-size: 1.02rem;
+      max-width: 720px;
+    }
+
+    .cta-box {
+      border-radius: 28px;
+      padding: 24px;
+      border: 1px solid rgba(93, 169, 255, 0.16);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .cta-box .btn + .btn { margin-top: 12px; }
+
+    .cta-note {
+      margin-top: 14px;
+      color: var(--soft);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    footer { padding: 0 0 36px; }
+
+    .footer-inner {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding-top: 20px;
+      border-top: 1px solid rgba(120, 157, 219, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover { color: var(--text); }
+
+    @media (max-width: 1040px) {
+      .hero-card,
+      .cta-card,
+      .content-grid,
+      .stats-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar { position: static; }
+    }
+
+    @media (max-width: 820px) {
+      .topbar-inner {
+        min-height: auto;
+        padding: 14px 0;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav { justify-content: flex-start; }
+      .hero { padding-top: 48px; }
+      .hero-card,
+      .section-card,
+      .quote-card,
+      .cta-card { padding: 24px; border-radius: 28px; }
+    }
+
+    @media (max-width: 560px) {
+      .container,
+      .topbar-inner,
+      .footer-inner { width: min(calc(100% - 20px), var(--max)); }
+      .btn { width: 100%; }
+      .hero-actions { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/index.html" aria-label="COGNATIVE home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span>
+            <span class="brand-title">COGNATIVE™</span>
+            <span class="brand-subtitle">Designed for how you think</span>
+          </span>
+        </a>
+
+        <nav class="nav" aria-label="Primary navigation">
+          <a class="nav-link" href="/index.html">Home</a>
+          <a class="nav-link" href="/demo-flow.html">Demo</a>
+          <a class="nav-link" href="#definition">Definition</a>
+          <a class="nav-link" href="#why-it-matters">Why it matters</a>
+          <a class="btn btn-secondary" href="/demo-flow.html">Try Demo</a>
+          <a class="btn btn-primary" href="#start">Start Thinking</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-card">
+            <div>
+              <div class="eyebrow">Category anchor page</div>
+              <h1><span class="gradient-text">AI Thinking Platform: where thinking becomes intelligence.</span></h1>
+              <p class="hero-subhead">
+                AI has made information instant and output effortless. That shift created a new problem: people move faster, yet often think less deeply. An AI Thinking Platform is designed to reverse that pattern by strengthening reasoning, executive functioning, decision intelligence, and the visible path behind strong decisions. COGNATIVE™ is building this category.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="/demo-flow.html">Try the Thinking Experience</a>
+                <a class="btn btn-secondary" href="/index.html">Explore the Platform</a>
+              </div>
+            </div>
+            <aside class="hero-side">
+              <div class="summary-card">
+                <div class="summary-label">Core thesis</div>
+                <strong>AI generates output. COGNATIVE™ develops intelligence.</strong>
+                <p>Most tools optimize output. COGNATIVE™ optimizes thinking through guided reasoning, reflection loops, and structured decision development.</p>
+              </div>
+              <div class="summary-card">
+                <div class="summary-label">Category signal</div>
+                <strong>Designed for how you think</strong>
+                <p>This page teaches users and search engines what an AI Thinking Platform is, why it matters, and why the category deserves its own language.</p>
+              </div>
+              <div class="summary-card">
+                <div class="summary-label">Leadership relevance</div>
+                <strong>Executive functioning matters</strong>
+                <p>Planning, sequencing, reflection, prioritization, and follow-through remain central to learning, leadership, and real-world execution.</p>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-number">1</div>
+              <div class="stat-text">new category centered on stronger reasoning, not just faster answers</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">3</div>
+              <div class="stat-text">core areas strengthened by an AI Thinking Platform: learning, decision-making, and execution clarity</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">5</div>
+              <div class="stat-text">critical executive functioning signals: planning, sequencing, evaluating, deciding, and executing</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-number">∞</div>
+              <div class="stat-text">long-term value when people build durable intelligence rather than temporary output dependency</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="content">
+        <div class="container content-grid">
+          <div class="article-flow">
+            <article class="section-card" id="definition">
+              <div class="section-kicker">Definition</div>
+              <h2>What is an AI Thinking Platform?</h2>
+              <p>
+                An AI Thinking Platform is a system designed to strengthen how people think, reason, and make decisions. It guides users through structured cognitive steps rather than simply delivering answers.
+              </p>
+              <p>
+                Instead of replacing thought, an AI Thinking Platform develops it. The goal is to make reasoning more visible, more deliberate, and more useful in real execution. This is where COGNATIVE™ is positioned.
+              </p>
+              <div class="bullet-list">
+                <div class="bullet-item">structured reasoning flows that improve the quality of thought</div>
+                <div class="bullet-item">guided questioning that surfaces assumptions and tradeoffs</div>
+                <div class="bullet-item">reflection loops that strengthen learning and judgment</div>
+                <div class="bullet-item">visible thinking processes that improve confidence and accountability</div>
+                <div class="bullet-item">decision intelligence that supports real-world action</div>
+              </div>
+            </article>
+
+            <article class="section-card">
+              <div class="section-kicker">The problem</div>
+              <h2>Output without thinking creates long-term risk</h2>
+              <p>
+                Most AI tools generate answers, summarize information, and automate responses. That capability is useful, yet it can also create dependency on output instead of building the underlying ability to think.
+              </p>
+              <p>
+                Over time, that pattern can weaken reasoning, decision-making, and executive functioning. The long-term risk is a workforce that executes without understanding the logic behind the action.
+              </p>
+              <div class="bullet-list">
+                <div class="bullet-item">people complete work without fully understanding how the result was formed</div>
+                <div class="bullet-item">students lose repetition in the mental steps that support learning</div>
+                <div class="bullet-item">professionals react faster while analyzing less deeply</div>
+                <div class="bullet-item">future leaders gain output speed without equal growth in judgment</div>
+              </div>
+            </article>
+
+            <article class="quote-card">
+              <p>
+                The future is asking people to lead in more complex environments while giving them fewer reasons to practice deep reasoning. An AI Thinking Platform helps restore the steps behind judgment, clarity, and strong execution.
+              </p>
+              <strong>COGNATIVE™ category thesis</strong>
+            </article>
+
+            <article class="section-card" id="why-it-matters">
+              <div class="section-kicker">Why it matters</div>
+              <h2>Thinking matters more than output</h2>
+              <p>
+                Thinking drives judgment, prioritization, problem-solving, and leadership. Output alone cannot develop those capabilities. Intelligence forms when individuals process information, challenge assumptions, organize ideas, and arrive at conclusions through active reasoning.
+              </p>
+              <p>
+                This is the core gap most traditional AI products leave behind. An AI Thinking Platform addresses that gap directly by investing in the mind behind the answer.
+              </p>
+            </article>
+
+            <article class="section-card">
+              <div class="section-kicker">How COGNATIVE™ works</div>
+              <h2>Write-first. Reasoning-first. Decision-ready.</h2>
+              <p>
+                COGNATIVE™ uses a write-first and reasoning-first approach. Users engage with the system before receiving polished output. That process encourages deeper engagement, stronger memory formation, and clearer thinking patterns.
+              </p>
+              <p>
+                The platform introduces guided Socratic questioning, iterative refinement, structured feedback, and decision clarity frameworks. Each interaction is designed to strengthen intelligence rather than bypass it.
+              </p>
+              <div class="bullet-list">
+                <div class="bullet-item">users begin with their own words and reasoning</div>
+                <div class="bullet-item">guided prompts challenge assumptions and sharpen logic</div>
+                <div class="bullet-item">reflection helps users understand how they arrived at a decision</div>
+                <div class="bullet-item">stronger thought leads to stronger communication and stronger execution</div>
+              </div>
+            </article>
+
+            <article class="section-card">
+              <div class="section-kicker">Executive functioning</div>
+              <h2>Restoring the missing layer behind leadership</h2>
+              <p>
+                Executive functioning includes the ability to plan, sequence, evaluate, decide, and execute. Many AI systems remove those steps by delivering immediate answers. COGNATIVE™ restores them.
+              </p>
+              <p>
+                Users learn to think through decisions, understand how conclusions are formed, and build confidence in their reasoning. That capability is essential for long-term performance, leadership development, and decision intelligence.
+              </p>
+            </article>
+
+            <article class="section-card">
+              <div class="section-kicker">The workforce shift</div>
+              <h2>The next generation needs stronger cognitive discipline</h2>
+              <p>
+                AI has accelerated access to answers while reducing the need to think through problems step by step. This creates a gap: students rely on output, professionals react instead of analyze, and future leaders enter more demanding environments with less practice in structured reasoning.
+              </p>
+              <p>
+                We are preparing people for a complex workforce while removing the very skills required to succeed in it. An AI Thinking Platform addresses that problem by helping people build the ability to reason, explain, prioritize, and execute with more clarity.
+              </p>
+            </article>
+
+            <article class="section-card">
+              <div class="section-kicker">The category shift</div>
+              <h2>From output to intelligence</h2>
+              <p>
+                The future will not be defined by faster tools alone. It will be shaped by better thinking. AI Thinking Platforms represent a shift toward systems that strengthen understanding, not just speed.
+              </p>
+              <p>
+                COGNATIVE™ is built for professionals making complex decisions, advanced students seeking clarity and direction, leaders developing stronger judgment, and individuals who want to think better rather than simply move faster.
+              </p>
+            </article>
+
+            <article class="section-card">
+              <div class="section-kicker">Category ownership</div>
+              <h2>COGNATIVE™: Intelligence, unlocked.</h2>
+              <p>
+                COGNATIVE™ is building the AI Thinking Platform category around structured reasoning, executive functioning, and decision intelligence. The platform is designed for how people think, built for how they decide, and engineered for real-world execution.
+              </p>
+              <p>
+                AI generates output. COGNATIVE™ develops intelligence.
+              </p>
+            </article>
+          </div>
+
+          <aside class="sidebar">
+            <div class="sidebar-card">
+              <h3>On this page</h3>
+              <div class="mini-links">
+                <a class="mini-link" href="#definition">Definition</a>
+                <a class="mini-link" href="#why-it-matters">Why it matters</a>
+                <a class="mini-link" href="/demo-flow.html">Try the demo</a>
+                <a class="mini-link" href="/index.html">Visit homepage</a>
+              </div>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>SEO focus phrases</h3>
+              <p>AI Thinking Platform</p>
+              <p>decision intelligence platform</p>
+              <p>executive functioning tools</p>
+              <p>structured reasoning</p>
+              <p>reasoning-first AI</p>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>Category language</h3>
+              <p>Where thinking becomes intelligence.</p>
+              <p>Designed for how you think.</p>
+              <p>Intelligence, unlocked.</p>
+              <p>Stop reacting. Start thinking.</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="cta" id="start">
+        <div class="container">
+          <div class="cta-card">
+            <div>
+              <div class="section-kicker">Start here</div>
+              <h2><span class="gradient-text">Build intelligence, not just output.</span></h2>
+              <p>
+                COGNATIVE™ is designed to help people think more clearly, reason more deeply, and execute with stronger judgment. Explore the platform story or enter the demo experience to see how the category comes to life.
+              </p>
+            </div>
+            <div class="cta-box">
+              <a class="btn btn-primary" style="width:100%;" href="/demo-flow.html">Try the Thinking Experience</a>
+              <a class="btn btn-secondary" style="width:100%;" href="/index.html">Explore COGNATIVE™</a>
+              <div class="cta-note">
+                AI Thinking Platform. Decision intelligence. Executive functioning. Structured reasoning. COGNATIVE™ is building the category.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> COGNATIVE™. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="/index.html">Home</a>
+          <a href="/demo-flow.html">Demo</a>
+          <a href="/ai-thinking-platform.html">AI Thinking Platform</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
 
