@@ -8,151 +8,366 @@
     name="description"
     content="A write-first experience that turns raw thought into structured intelligence."
   />
+  <meta property="og:title" content="CogNative Thinking Session" />
+  <meta
+    property="og:description"
+    content="A write-first experience that turns raw thought into structured intelligence."
+  />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#061827" />
+
   <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+
   <link
     href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
     rel="stylesheet"
   />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: "#061827",
+            surface: "#0F172A",
+            mint: "#00E5A0",
+            cyan: "#00B4D8",
+            violet: "#7C3AED"
+          }
+        }
+      }
+    };
+  </script>
+
   <style>
     html, body {
       height: 100%;
       margin: 0;
     }
+
     body {
-      background: #061827;
+      background-color: #061827;
       color: #E2E8F0;
       font-family: "DM Sans", sans-serif;
     }
+
     .font-heading {
       font-family: "Syne", sans-serif;
     }
+
     .gradient-text {
       background: linear-gradient(135deg, #00E5A0, #00B4D8, #7C3AED);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .card {
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 0 30px rgba(0,0,0,0.18);
+
+    .neural-grid {
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(0,229,160,.06) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(124,58,237,.06) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, rgba(0,180,216,.04) 0%, transparent 60%);
     }
+
+    .glass-card {
+      background: rgba(15, 23, 42, 0.72);
+      backdrop-filter: blur(18px);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.02) inset,
+        0 12px 40px rgba(0,0,0,0.22);
+    }
+
+    .panel {
+      background: rgba(0,0,0,0.18);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 16px;
+    }
+
+    .panel-blue {
+      background: rgba(0,0,0,0.14);
+      border: 1px solid rgba(59,130,246,0.18);
+      border-radius: 16px;
+    }
+
     .btn-primary {
       background: linear-gradient(135deg, #00E5A0, #00B4D8);
       color: #061827;
-      font-weight: 700;
-      border: none;
-      border-radius: 9999px;
-      padding: 12px 22px;
-      cursor: pointer;
+      transition: all .25s ease;
     }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 30px rgba(0,229,160,.28);
+    }
+
     .btn-secondary {
-      background: transparent;
+      border: 1px solid rgba(255,255,255,0.12);
       color: #E2E8F0;
-      border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 9999px;
-      padding: 12px 22px;
-      cursor: pointer;
+      background: rgba(255,255,255,0.02);
+      transition: all .25s ease;
     }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.05);
+      border-color: rgba(255,255,255,0.2);
+    }
+
     textarea {
       width: 100%;
-      min-height: 140px;
-      background: rgba(0,0,0,0.25);
-      color: #E2E8F0;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 12px;
-      padding: 14px;
+      min-height: 160px;
       resize: vertical;
+      background: rgba(0,0,0,0.22);
+      color: #E2E8F0;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px;
+      padding: 16px 18px;
       font: inherit;
+      line-height: 1.7;
+      outline: none;
+      transition: all .2s ease;
     }
+
+    textarea:focus {
+      border-color: rgba(0,229,160,0.4);
+      box-shadow: 0 0 0 3px rgba(0,229,160,0.08);
+    }
+
+    .step-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 9999px;
+      background: rgba(255,255,255,0.14);
+      transition: all .25s ease;
+    }
+
+    .step-dot.active {
+      background: linear-gradient(135deg, #00E5A0, #00B4D8);
+      box-shadow: 0 0 18px rgba(0,229,160,.35);
+      transform: scale(1.15);
+    }
+
+    .fade-in {
+      animation: fadeIn .35s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
     .hidden-step {
       display: none;
     }
   </style>
 </head>
-<body>
-  <main style="max-width: 900px; margin: 0 auto; padding: 40px 20px;">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:32px;">
-      <a href="/" style="color:#9CA3AF; text-decoration:none;">← Back to home</a>
-      <div style="color:#00E5A0; font-size:14px;">CogNative Demo</div>
-    </div>
 
-    <header style="text-align:center; margin-bottom:32px;">
-      <h1 class="font-heading" style="font-size: clamp(2rem, 5vw, 4rem); margin:0 0 12px 0;">
-        CogNative <span class="gradient-text">Thinking Session</span>
+<body class="neural-grid min-h-screen">
+  <main class="max-w-5xl mx-auto px-6 py-8 sm:py-10">
+    <nav class="flex items-center justify-between mb-10">
+      <a href="/" class="text-slate-400 hover:text-white transition inline-flex items-center gap-2 text-sm">
+        <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
+        Back to home
+      </a>
+
+      <div class="flex items-center gap-2">
+        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <circle cx="16" cy="16" r="14" stroke="url(#ng-nav)" stroke-width="2"></circle>
+          <circle cx="16" cy="12" r="3" fill="#00E5A0"></circle>
+          <defs>
+            <linearGradient id="ng-nav" x1="0" y1="0" x2="32" y2="32">
+              <stop stop-color="#00E5A0"></stop>
+              <stop offset="1" stop-color="#7C3AED"></stop>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span class="font-heading font-semibold text-white">CogNative Demo</span>
+      </div>
+    </nav>
+
+    <header class="text-center mb-10 sm:mb-12">
+      <p class="text-mint/70 font-heading text-xs sm:text-sm tracking-[0.2em] uppercase mb-5">
+        Write-First Thinking Session
+      </p>
+
+      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl text-white leading-tight mb-5">
+        Turn raw thought into<br />
+        <span class="gradient-text">structured intelligence.</span>
       </h1>
-      <p style="max-width:700px; margin:0 auto; color:#94A3B8; font-size:18px;">
-        A write-first experience that turns raw thought into structured intelligence.
+
+      <p class="max-w-2xl mx-auto text-slate-400 text-base sm:text-lg leading-relaxed">
+        Start with your own words. CogNative helps you surface patterns, challenge assumptions, and move toward clearer decisions.
       </p>
     </header>
 
-    <section id="step-input" class="card">
-      <h2 class="font-heading" style="margin-top:0;">Start with a real question</h2>
-      <p style="color:#94A3B8;">What are you trying to figure out?</p>
-      <textarea id="userInput" placeholder="I need help deciding what college baseball path is right for me..."></textarea>
-      <div style="margin-top:16px;">
-        <button class="btn-primary" onclick="goToWrite()">Begin Session</button>
+    <div class="flex items-center justify-center gap-3 mb-8" aria-label="Progress">
+      <div id="dot-input" class="step-dot active"></div>
+      <div id="dot-write" class="step-dot"></div>
+      <div id="dot-socratic" class="step-dot"></div>
+      <div id="dot-insight" class="step-dot"></div>
+    </div>
+
+    <section id="step-input" class="glass-card p-6 sm:p-8 fade-in">
+      <div class="flex items-start justify-between gap-4 mb-5">
+        <div>
+          <p class="text-cyan text-xs uppercase tracking-[0.18em] font-heading mb-2">Step 1</p>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white">Start with a real question</h2>
+        </div>
+        <div class="hidden sm:flex w-12 h-12 rounded-2xl bg-cyan/10 items-center justify-center">
+          <i data-lucide="sparkles" style="width:22px;height:22px;color:#00B4D8;"></i>
+        </div>
+      </div>
+
+      <p class="text-slate-400 mb-5 leading-relaxed">
+        What are you trying to figure out right now?
+      </p>
+
+      <textarea
+        id="userInput"
+        placeholder="I need help deciding what college baseball path is right for me..."
+      ></textarea>
+
+      <div class="mt-5 flex flex-wrap gap-3">
+        <button class="btn-primary rounded-full px-6 py-3 font-heading font-semibold" onclick="goToWrite()">
+          Begin Session
+        </button>
       </div>
     </section>
 
-    <section id="step-write" class="card hidden-step">
-      <h2 class="font-heading" style="margin-top:0;">Write what you already know</h2>
-      <div id="writeQuestions" style="color:#94A3B8; margin-bottom:16px;"></div>
-      <textarea id="writing" placeholder="Write what you already know in your own words..."></textarea>
-      <div style="margin-top:16px;">
-        <button class="btn-primary" onclick="goToSocratic()">Deepen Thinking</button>
+    <section id="step-write" class="glass-card p-6 sm:p-8 fade-in hidden-step">
+      <div class="flex items-start justify-between gap-4 mb-5">
+        <div>
+          <p class="text-mint text-xs uppercase tracking-[0.18em] font-heading mb-2">Step 2</p>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white">Write what you already know</h2>
+        </div>
+        <div class="hidden sm:flex w-12 h-12 rounded-2xl bg-mint/10 items-center justify-center">
+          <i data-lucide="pen-line" style="width:22px;height:22px;color:#00E5A0;"></i>
+        </div>
+      </div>
+
+      <div id="writeQuestions" class="space-y-2 text-slate-400 mb-5 leading-relaxed"></div>
+
+      <textarea
+        id="writing"
+        placeholder="Write what you already know in your own words..."
+      ></textarea>
+
+      <div class="mt-5 flex flex-wrap gap-3">
+        <button class="btn-secondary rounded-full px-6 py-3 font-heading font-medium" onclick="goBackToInput()">
+          Back
+        </button>
+        <button class="btn-primary rounded-full px-6 py-3 font-heading font-semibold" onclick="goToSocratic()">
+          Deepen Thinking
+        </button>
       </div>
     </section>
 
-    <section id="step-socratic" class="card hidden-step">
-      <h2 class="font-heading" style="margin-top:0;">Refine your thinking</h2>
-      <div id="socraticQuestions" style="color:#94A3B8; margin-bottom:16px;"></div>
-      <textarea id="reflection" placeholder="Refine your thinking here..."></textarea>
-      <div style="margin-top:16px;">
-        <button class="btn-primary" onclick="goToInsight()">Reveal Insight</button>
+    <section id="step-socratic" class="glass-card p-6 sm:p-8 fade-in hidden-step">
+      <div class="flex items-start justify-between gap-4 mb-5">
+        <div>
+          <p class="text-violet text-xs uppercase tracking-[0.18em] font-heading mb-2">Step 3</p>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white">Refine your thinking</h2>
+        </div>
+        <div class="hidden sm:flex w-12 h-12 rounded-2xl bg-violet/10 items-center justify-center">
+          <i data-lucide="git-branch" style="width:22px;height:22px;color:#7C3AED;"></i>
+        </div>
+      </div>
+
+      <div id="socraticQuestions" class="space-y-2 text-slate-400 mb-5 leading-relaxed"></div>
+
+      <textarea
+        id="reflection"
+        placeholder="Refine your thinking here..."
+      ></textarea>
+
+      <div class="mt-5 flex flex-wrap gap-3">
+        <button class="btn-secondary rounded-full px-6 py-3 font-heading font-medium" onclick="goBackToWrite()">
+          Back
+        </button>
+        <button class="btn-primary rounded-full px-6 py-3 font-heading font-semibold" onclick="goToInsight()">
+          Reveal Insight
+        </button>
       </div>
     </section>
 
-    <section id="step-insight" class="card hidden-step">
-      <h2 class="font-heading" style="margin-top:0;">Structured Insight</h2>
-
-      <div style="margin-bottom:18px; padding:16px; border-radius:12px; background:rgba(0,0,0,0.28); border:1px solid rgba(255,255,255,0.08);">
-        <p style="margin:0 0 8px 0; color:#64748B; font-size:12px;">Raw Thought</p>
-        <p id="rawThought" style="margin:0; color:#D1D5DB; font-style:italic; line-height:1.8;"></p>
+    <section id="step-insight" class="glass-card p-6 sm:p-8 fade-in hidden-step">
+      <div class="flex items-start justify-between gap-4 mb-6">
+        <div>
+          <p class="text-cyan text-xs uppercase tracking-[0.18em] font-heading mb-2">Step 4</p>
+          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white">Structured Insight</h2>
+        </div>
+        <div class="hidden sm:flex w-12 h-12 rounded-2xl bg-cyan/10 items-center justify-center">
+          <i data-lucide="brain-circuit" style="width:22px;height:22px;color:#00B4D8;"></i>
+        </div>
       </div>
 
-      <div style="text-align:center; color:#38BDF8; font-size:12px; margin:18px 0;">
-        ↓ transformed into structured intelligence ↓
+      <div class="panel p-5 mb-5">
+        <p class="text-xs text-slate-500 mb-2 uppercase tracking-[0.18em]">Raw Thought</p>
+        <p id="rawThought" class="text-slate-300 italic leading-8"></p>
       </div>
 
-      <div style="margin-bottom:18px; padding:16px; border-radius:12px; background:rgba(0,0,0,0.18); border:1px solid rgba(59,130,246,0.22);">
-        <p style="margin:0 0 8px 0; color:#38BDF8; font-size:12px;">Cognitive Signals</p>
-        <ul id="signalsList" style="margin:0; padding-left:18px; color:#D1D5DB; line-height:1.8;"></ul>
+      <div class="text-center text-cyan text-xs tracking-[0.18em] uppercase mb-5">
+        transformed into structured intelligence
       </div>
 
-      <div style="margin-bottom:18px; padding:16px; border-radius:12px; background:rgba(0,0,0,0.18); border:1px solid rgba(59,130,246,0.22);">
-        <p style="margin:0 0 8px 0; color:#38BDF8; font-size:12px;">Suggested Paths</p>
-        <ul id="pathsList" style="margin:0; padding-left:18px; color:#D1D5DB; line-height:1.8;"></ul>
+      <div class="grid md:grid-cols-2 gap-5 mb-5">
+        <div class="panel-blue p-5">
+          <p class="text-xs text-cyan mb-3 uppercase tracking-[0.18em]">Cognitive Signals</p>
+          <ul id="signalsList" class="space-y-2 text-slate-300 list-disc pl-5 leading-7"></ul>
+        </div>
+
+        <div class="panel-blue p-5">
+          <p class="text-xs text-cyan mb-3 uppercase tracking-[0.18em]">Suggested Paths</p>
+          <ul id="pathsList" class="space-y-2 text-slate-300 list-disc pl-5 leading-7"></ul>
+        </div>
       </div>
 
-      <div style="margin-bottom:18px; padding:16px; border-radius:12px; background:rgba(0,0,0,0.2); border:1px solid rgba(255,255,255,0.08);">
-        <p style="margin:0 0 8px 0; color:#64748B; font-size:12px;">Insight Summary</p>
-        <p id="summaryText" style="margin:0; color:#D1D5DB; line-height:1.8;"></p>
+      <div class="panel p-5 mb-6">
+        <p class="text-xs text-slate-500 mb-2 uppercase tracking-[0.18em]">Insight Summary</p>
+        <p id="summaryText" class="text-slate-300 leading-8"></p>
       </div>
 
-      <button class="btn-primary" onclick="resetSession()">Start New Session</button>
+      <div class="flex flex-wrap gap-3">
+        <button class="btn-secondary rounded-full px-6 py-3 font-heading font-medium" onclick="goBackToSocratic()">
+          Back
+        </button>
+        <button class="btn-primary rounded-full px-6 py-3 font-heading font-semibold" onclick="resetSession()">
+          Start New Session
+        </button>
+      </div>
     </section>
   </main>
 
   <script>
-    function showStep(stepId) {
+    function setActiveDot(step) {
+      const ids = ["input", "write", "socratic", "insight"];
+      ids.forEach((id) => {
+        const el = document.getElementById(`dot-${id}`);
+        if (el) el.classList.remove("active");
+      });
+      const active = document.getElementById(`dot-${step}`);
+      if (active) active.classList.add("active");
+    }
+
+    function showStep(stepId, dotId) {
       document.getElementById("step-input").classList.add("hidden-step");
       document.getElementById("step-write").classList.add("hidden-step");
       document.getElementById("step-socratic").classList.add("hidden-step");
       document.getElementById("step-insight").classList.add("hidden-step");
-      document.getElementById(stepId).classList.remove("hidden-step");
+
+      const target = document.getElementById(stepId);
+      target.classList.remove("hidden-step");
+      target.classList.add("fade-in");
+
+      setActiveDot(dotId);
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
@@ -346,7 +561,7 @@
       const questions = getWriteQuestions(topic);
 
       document.getElementById("writeQuestions").innerHTML = questions.map(q => `<p>${q}</p>`).join("");
-      showStep("step-write");
+      showStep("step-write", "write");
     }
 
     function goToSocratic() {
@@ -355,7 +570,7 @@
       const questions = getSocraticQuestions(topic);
 
       document.getElementById("socraticQuestions").innerHTML = questions.map(q => `<p>${q}</p>`).join("");
-      showStep("step-socratic");
+      showStep("step-socratic", "socratic");
     }
 
     function goToInsight() {
@@ -373,15 +588,29 @@
       document.getElementById("pathsList").innerHTML = paths.map(p => `<li>${p}</li>`).join("");
       document.getElementById("summaryText").textContent = summary;
 
-      showStep("step-insight");
+      showStep("step-insight", "insight");
+    }
+
+    function goBackToInput() {
+      showStep("step-input", "input");
+    }
+
+    function goBackToWrite() {
+      showStep("step-write", "write");
+    }
+
+    function goBackToSocratic() {
+      showStep("step-socratic", "socratic");
     }
 
     function resetSession() {
       document.getElementById("userInput").value = "";
       document.getElementById("writing").value = "";
       document.getElementById("reflection").value = "";
-      showStep("step-input");
+      showStep("step-input", "input");
     }
+
+    lucide.createIcons();
   </script>
 </body>
 </html>
