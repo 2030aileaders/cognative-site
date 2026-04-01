@@ -1,754 +1,1459 @@
-<!doctype html>
-<html lang="en" class="h-full">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>COGNATIVE Thinking Session</title>
+  <title>COGNATIVE™ Demo Flow | Designed for how you think</title>
   <meta
     name="description"
-    content="A write-first experience by COGNATIVE that turns raw thought into structured intelligence."
+    content="Experience the COGNATIVE™ demo flow: a premium write-first intelligence runtime built to strengthen reasoning, executive functioning, decision-making, and real-world execution."
   />
-  <meta property="og:title" content="COGNATIVE Thinking Session" />
+  <meta name="theme-color" content="#081120" />
+  <meta property="og:title" content="COGNATIVE™ Demo Flow | Intelligence, unlocked." />
   <meta
     property="og:description"
-    content="A write-first experience by COGNATIVE that turns raw thought into structured intelligence."
+    content="A write-first intelligence runtime that makes reasoning visible and strengthens how people think, decide, and execute."
   />
   <meta property="og:type" content="website" />
-  <meta name="theme-color" content="#061827" />
-
-  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
-
+  <meta property="og:url" content="https://cognative.app/demo-flow.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   />
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          colors: {
-            navy: "#061827",
-            surface: "#0F172A",
-            mint: "#00E5A0",
-            cyan: "#00B4D8",
-            violet: "#7C3AED"
-          }
-        }
-      }
-    };
-  </script>
-
   <style>
-    html, body {
-      height: 100%;
-      margin: 0;
+    :root {
+      --bg: #06111f;
+      --bg-soft: #0b1930;
+      --panel: rgba(7, 18, 38, 0.82);
+      --panel-strong: rgba(10, 24, 49, 0.94);
+      --line: rgba(120, 157, 219, 0.18);
+      --line-strong: rgba(120, 157, 219, 0.28);
+      --text: #e8f1ff;
+      --muted: #b4c4e2;
+      --soft: #90a6cf;
+      --blue: #5da9ff;
+      --blue-strong: #2c7dff;
+      --gold: #f0c96a;
+      --green: #34d399;
+      --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --radius-xl: 30px;
+      --radius-lg: 22px;
+      --radius-md: 16px;
+      --max: 1280px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background-color: #061827;
-      color: #E2E8F0;
-      font-family: "DM Sans", sans-serif;
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 18%, rgba(59, 130, 246, 0.18), transparent 0 34%),
+        radial-gradient(circle at 86% 10%, rgba(240, 201, 106, 0.12), transparent 0 24%),
+        radial-gradient(circle at 72% 74%, rgba(59, 130, 246, 0.11), transparent 0 28%),
+        linear-gradient(180deg, #050d18 0%, #081120 42%, #081425 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
     }
 
-    .font-heading {
-      font-family: "Syne", sans-serif;
+    body::before,
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
     }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #00E5A0, #00B4D8, #7C3AED);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .neural-grid {
+    body::before {
       background-image:
-        radial-gradient(circle at 20% 30%, rgba(0,229,160,.06) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(124,58,237,.06) 0%, transparent 50%),
-        radial-gradient(circle at 50% 50%, rgba(0,180,216,.04) 0%, transparent 60%);
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 90px 90px;
+      mask-image: radial-gradient(circle at center, black 35%, transparent 90%);
+      opacity: 0.18;
     }
 
-    .glass-card {
-      background: rgba(15, 23, 42, 0.72);
-      backdrop-filter: blur(18px);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
+    body::after {
+      background:
+        linear-gradient(120deg, transparent 0%, rgba(93, 169, 255, 0.06) 34%, transparent 62%),
+        linear-gradient(180deg, transparent 0%, rgba(240, 201, 106, 0.04) 100%);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+      color: inherit;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(16px);
+      background: rgba(4, 10, 20, 0.64);
+      border-bottom: 1px solid rgba(120, 157, 219, 0.1);
+    }
+
+    .topbar-inner {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      position: relative;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255,255,255,0.22), transparent 0 34%),
+        linear-gradient(135deg, rgba(93, 169, 255, 0.95), rgba(36, 103, 255, 0.88));
       box-shadow:
-        0 0 0 1px rgba(255,255,255,0.02) inset,
-        0 12px 40px rgba(0,0,0,0.22);
+        inset 0 1px 0 rgba(255,255,255,0.25),
+        0 0 28px rgba(93, 169, 255, 0.35);
+      flex: 0 0 auto;
     }
 
-    .panel {
-      background: rgba(0,0,0,0.18);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 16px;
+    .brand-mark::before,
+    .brand-mark::after {
+      content: '';
+      position: absolute;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.88);
     }
 
-    .panel-blue {
-      background: rgba(0,0,0,0.14);
-      border: 1px solid rgba(59,130,246,0.18);
-      border-radius: 16px;
+    .brand-mark::before {
+      width: 20px;
+      height: 3px;
+      left: 11px;
+      top: 13px;
+      box-shadow: 0 8px 0 rgba(255,255,255,0.88), 0 16px 0 rgba(255,255,255,0.88);
+    }
+
+    .brand-mark::after {
+      width: 3px;
+      height: 20px;
+      left: 11px;
+      top: 11px;
+    }
+
+    .brand-copy {
+      min-width: 0;
+    }
+
+    .brand-title {
+      font-size: 0.96rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #f8fbff;
+      white-space: nowrap;
+    }
+
+    .brand-subtitle {
+      margin-top: 4px;
+      color: var(--soft);
+      font-size: 0.82rem;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      font-size: 0.94rem;
+      padding: 10px 12px;
+      border-radius: 999px;
+      transition: 0.2s ease;
+    }
+
+    .nav-link:hover {
+      color: var(--text);
+      background: rgba(93, 169, 255, 0.08);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
     }
 
     .btn-primary {
-      background: linear-gradient(135deg, #00E5A0, #00B4D8);
-      color: #061827;
-      transition: all .25s ease;
+      color: #081120;
+      background: linear-gradient(135deg, #f2d58f, #f0c96a 58%, #dbaf3d);
+      box-shadow: 0 16px 36px rgba(240, 201, 106, 0.26);
     }
 
     .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 0 30px rgba(0,229,160,.28);
+      box-shadow: 0 18px 42px rgba(240, 201, 106, 0.32);
     }
 
     .btn-secondary {
-      border: 1px solid rgba(255,255,255,0.12);
-      color: #E2E8F0;
-      background: rgba(255,255,255,0.02);
-      transition: all .25s ease;
+      color: var(--text);
+      background: rgba(93, 169, 255, 0.08);
+      border-color: rgba(93, 169, 255, 0.2);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
     }
 
     .btn-secondary:hover {
-      background: rgba(255,255,255,0.05);
-      border-color: rgba(255,255,255,0.2);
+      background: rgba(93, 169, 255, 0.12);
+      border-color: rgba(93, 169, 255, 0.32);
     }
 
-    .topbar-btn {
-      border: 1px solid rgba(255,255,255,0.12);
+    .btn-ghost {
+      color: #cfe3ff;
       background: rgba(255,255,255,0.03);
-      color: #CBD5E1;
-      border-radius: 9999px;
-      padding: 10px 14px;
-      font-size: 14px;
-      line-height: 1;
-      transition: all .25s ease;
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.14);
+    }
+
+    .btn-block {
+      width: 100%;
+    }
+
+    .panel,
+    .hero-card,
+    .shell,
+    .step-card,
+    .sidebar-card,
+    .note-card,
+    .progress-card,
+    .cta-wrap,
+    .insight-card,
+    .micro-card {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(10, 22, 45, 0.82), rgba(8, 18, 36, 0.94));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .panel::before,
+    .hero-card::before,
+    .shell::before,
+    .step-card::before,
+    .sidebar-card::before,
+    .note-card::before,
+    .progress-card::before,
+    .cta-wrap::before,
+    .insight-card::before,
+    .micro-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.05), transparent 28%, transparent 72%, rgba(93,169,255,0.08));
+      pointer-events: none;
+    }
+
+    .hero {
+      padding: 42px 0 28px;
+    }
+
+    .hero-card {
+      border-radius: 34px;
+      padding: 28px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .eyebrow {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .topbar-btn:hover {
-      background: rgba(255,255,255,0.06);
-      color: #ffffff;
-      border-color: rgba(255,255,255,0.2);
-    }
-
-    textarea {
-      width: 100%;
-      min-height: 160px;
-      resize: vertical;
-      background: rgba(0,0,0,0.22);
-      color: #E2E8F0;
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 16px 18px;
-      font: inherit;
-      line-height: 1.7;
-      outline: none;
-      transition: all .2s ease;
-    }
-
-    textarea:focus {
-      border-color: rgba(0,229,160,0.4);
-      box-shadow: 0 0 0 3px rgba(0,229,160,0.08);
-    }
-
-    .step-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 9999px;
-      background: rgba(255,255,255,0.14);
-      transition: all .25s ease;
-    }
-
-    .step-dot.active {
-      background: linear-gradient(135deg, #00E5A0, #00B4D8);
-      box-shadow: 0 0 18px rgba(0,229,160,.35);
-      transform: scale(1.15);
-    }
-
-    .fade-in {
-      animation: fadeIn .35s ease;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hidden-step {
-      display: none;
-    }
-
-    .thinking-overlay {
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(circle at center, rgba(0,180,216,0.08), rgba(6,24,39,0.96) 55%);
-      backdrop-filter: blur(8px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 100;
-      opacity: 0;
-      transition: opacity .25s ease;
-    }
-
-    .thinking-overlay.visible {
-      display: flex;
-      opacity: 1;
-    }
-
-    .thinking-card {
-      width: min(460px, calc(100vw - 32px));
-      background: rgba(15, 23, 42, 0.82);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 24px;
-      padding: 28px;
-      text-align: center;
-      box-shadow: 0 18px 60px rgba(0,0,0,0.32);
-    }
-
-    .thinking-orbs {
-      display: flex;
-      justify-content: center;
       gap: 10px;
+      width: fit-content;
+      padding: 11px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 201, 106, 0.24);
+      background: rgba(240, 201, 106, 0.08);
+      color: #f5d991;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       margin-bottom: 18px;
     }
 
-    .thinking-orb {
-      width: 12px;
-      height: 12px;
-      border-radius: 9999px;
-      background: linear-gradient(135deg, #00E5A0, #00B4D8);
-      animation: pulseOrb 1.2s ease-in-out infinite;
-      box-shadow: 0 0 18px rgba(0,229,160,0.25);
+    .eyebrow::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--gold);
+      box-shadow: 0 0 20px rgba(240, 201, 106, 0.7);
     }
 
-    .thinking-orb:nth-child(2) {
-      animation-delay: .15s;
+    h1,
+    h2,
+    h3,
+    h4,
+    p {
+      margin: 0;
     }
 
-    .thinking-orb:nth-child(3) {
-      animation-delay: .3s;
+    .hero h1 {
+      font-size: clamp(2.5rem, 4.5vw, 4.4rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      max-width: 13ch;
     }
 
-    @keyframes pulseOrb {
+    .gradient-text {
+      background: linear-gradient(135deg, #ffffff 0%, #dbeafe 42%, #71b2ff 78%, #f0c96a 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subhead {
+      margin-top: 18px;
+      max-width: 820px;
+      color: var(--muted);
+      font-size: 1.08rem;
+      line-height: 1.8;
+    }
+
+    .hero-pills {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #d7e5ff;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .hero-meta {
+      display: grid;
+      gap: 14px;
+      align-content: start;
+    }
+
+    .micro-card {
+      border-radius: 24px;
+      padding: 20px;
+    }
+
+    .micro-label {
+      color: #8fb6ff;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .micro-card strong {
+      display: block;
+      color: #ffffff;
+      font-size: 1.06rem;
+      margin-bottom: 8px;
+    }
+
+    .micro-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .layout {
+      padding: 14px 0 36px;
+    }
+
+    .shell {
+      border-radius: 34px;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.38fr) minmax(290px, 0.62fr);
+      gap: 20px;
+      min-height: 760px;
+    }
+
+    .workspace {
+      display: grid;
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .workspace-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+      padding: 6px 2px 2px;
+    }
+
+    .workspace-title {
+      display: grid;
+      gap: 6px;
+    }
+
+    .workspace-kicker {
+      color: #8fb6ff;
+      font-size: 0.82rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      font-weight: 700;
+    }
+
+    .workspace-title h2 {
+      font-size: 1.5rem;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+    }
+
+    .workspace-title p {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.95rem;
+      max-width: 720px;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .stage-switcher {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .step-card {
+      border-radius: 22px;
+      padding: 18px;
+      cursor: pointer;
+      transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .step-card:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+    }
+
+    .step-card.active {
+      border-color: rgba(93, 169, 255, 0.42);
+      background: linear-gradient(180deg, rgba(18, 37, 72, 0.9), rgba(8, 18, 36, 0.94));
+      box-shadow: 0 18px 40px rgba(32, 94, 197, 0.22);
+    }
+
+    .step-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .step-number {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(93,169,255,0.1);
+      border: 1px solid rgba(93,169,255,0.18);
+      color: #ffffff;
+      font-size: 0.94rem;
+      font-weight: 800;
+    }
+
+    .step-status {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #a9c7f7;
+    }
+
+    .step-card.active .step-status {
+      color: #d8ebff;
+    }
+
+    .step-card h3 {
+      font-size: 1rem;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .step-card p {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 0.9rem;
+    }
+
+    .runtime-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(270px, 0.42fr);
+      gap: 18px;
+      min-width: 0;
+    }
+
+    .panel {
+      border-radius: 28px;
+      padding: 22px;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .panel-kicker {
+      color: #8fb6ff;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .panel-header h3 {
+      font-size: 1.32rem;
+      line-height: 1.2;
+      color: #ffffff;
+      margin-bottom: 8px;
+      letter-spacing: -0.02em;
+    }
+
+    .panel-header p {
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 0.95rem;
+      max-width: 720px;
+    }
+
+    .live-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(16, 185, 129, 0.1);
+      color: #a7f3d0;
+      border: 1px solid rgba(16, 185, 129, 0.18);
+      font-size: 0.82rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .live-badge::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--green);
+      box-shadow: 0 0 14px rgba(52, 211, 153, 0.8);
+    }
+
+    .prompt-box,
+    .output-box,
+    .reflection-box {
+      border-radius: 22px;
+      padding: 18px;
+      border: 1px solid rgba(120, 157, 219, 0.12);
+      background: rgba(255,255,255,0.03);
+      margin-bottom: 16px;
+    }
+
+    .prompt-box:last-child,
+    .output-box:last-child,
+    .reflection-box:last-child {
+      margin-bottom: 0;
+    }
+
+    .label-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .box-label {
+      color: #d8e7ff;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(93,169,255,0.08);
+      border: 1px solid rgba(93,169,255,0.16);
+      color: #bcd8ff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .prompt-text,
+    .output-box p,
+    .reflection-box p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.97rem;
+    }
+
+    .demo-input {
+      width: 100%;
+      min-height: 210px;
+      border-radius: 22px;
+      border: 1px solid rgba(93,169,255,0.16);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      padding: 18px;
+      resize: vertical;
+      outline: none;
+      color: #edf4ff;
+      line-height: 1.75;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+    }
+
+    .demo-input:focus {
+      border-color: rgba(93,169,255,0.4);
+      box-shadow: 0 0 0 4px rgba(93,169,255,0.08);
+    }
+
+    .thinking-progress {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 14px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(93,169,255,0.14);
+      background: linear-gradient(180deg, rgba(93,169,255,0.06), rgba(93,169,255,0.02));
+    }
+
+    .thinking-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: var(--blue);
+      box-shadow: 0 0 14px rgba(93,169,255,0.7);
+      animation: pulse 1.4s ease-in-out infinite;
+    }
+
+    .thinking-progress span {
+      color: #dbeafe;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .action-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .sidebar {
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .sidebar-card {
+      border-radius: 26px;
+      padding: 20px;
+    }
+
+    .sidebar-card h4 {
+      font-size: 1.02rem;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+
+    .sidebar-card p {
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 0.93rem;
+    }
+
+    .score-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .score-box {
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .score-value {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.04em;
+    }
+
+    .score-label {
+      margin-top: 6px;
+      color: var(--soft);
+      font-size: 0.84rem;
+      line-height: 1.5;
+    }
+
+    .reasoning-list,
+    .insight-list,
+    .checkpoint-list {
+      display: grid;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .reasoning-item,
+    .insight-item,
+    .checkpoint-item {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      color: #dce9ff;
+      line-height: 1.6;
+      font-size: 0.92rem;
+    }
+
+    .reasoning-item::before,
+    .insight-item::before,
+    .checkpoint-item::before {
+      content: '•';
+      color: var(--gold);
+      font-size: 1.05rem;
+      line-height: 1.2;
+      margin-top: 1px;
+    }
+
+    .insights {
+      padding: 12px 0 34px;
+    }
+
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .insight-card {
+      border-radius: 26px;
+      padding: 22px;
+    }
+
+    .insight-kicker {
+      color: #8fb6ff;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .insight-card h3 {
+      font-size: 1.12rem;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .insight-card p {
+      color: var(--muted);
+      line-height: 1.75;
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      padding: 8px 0 80px;
+    }
+
+    .cta-wrap {
+      border-radius: 34px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .cta-kicker {
+      color: #8fb6ff;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .cta-wrap h2 {
+      font-size: clamp(2.1rem, 3.7vw, 3.8rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .cta-wrap p {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 1.02rem;
+      max-width: 720px;
+    }
+
+    .cta-box {
+      border-radius: 28px;
+      padding: 24px;
+      border: 1px solid rgba(93,169,255,0.16);
+      background: rgba(255,255,255,0.03);
+    }
+
+    .cta-box .btn + .btn {
+      margin-top: 12px;
+    }
+
+    .cta-note {
+      margin-top: 14px;
+      color: var(--soft);
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      padding: 0 0 34px;
+    }
+
+    .footer-inner {
+      width: min(calc(100% - 32px), var(--max));
+      margin: 0 auto;
+      padding-top: 20px;
+      border-top: 1px solid rgba(120, 157, 219, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      color: var(--soft);
+      font-size: 0.92rem;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    @keyframes pulse {
       0%, 100% {
-        opacity: .35;
-        transform: translateY(0) scale(1);
+        transform: scale(1);
+        opacity: 0.9;
       }
       50% {
+        transform: scale(1.25);
         opacity: 1;
-        transform: translateY(-4px) scale(1.08);
       }
     }
 
-    .thinking-caption {
-      color: #94A3B8;
-      font-size: 14px;
-      line-height: 1.7;
+    @media (max-width: 1120px) {
+      .hero-card,
+      .shell,
+      .runtime-grid,
+      .cta-wrap,
+      .insights-grid,
+      .stage-switcher {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 820px) {
+      .topbar-inner {
+        min-height: auto;
+        padding: 14px 0;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .hero-card,
+      .shell,
+      .cta-wrap {
+        padding: 22px;
+        border-radius: 28px;
+      }
+
+      .score-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .container,
+      .topbar-inner,
+      .footer-inner {
+        width: min(calc(100% - 20px), var(--max));
+      }
+
+      .hero-subhead,
+      .panel-header p,
+      .sidebar-card p,
+      .insight-card p,
+      .cta-wrap p,
+      .prompt-text,
+      .output-box p,
+      .reflection-box p {
+        font-size: 0.96rem;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .hero-actions,
+      .action-row {
+        gap: 10px;
+      }
+
+      .score-grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
-
-<body class="neural-grid min-h-screen">
-  <div id="thinkingOverlay" class="thinking-overlay" aria-hidden="true">
-    <div class="thinking-card">
-      <div class="thinking-orbs">
-        <div class="thinking-orb"></div>
-        <div class="thinking-orb"></div>
-        <div class="thinking-orb"></div>
-      </div>
-      <h3 class="font-heading text-2xl font-bold text-white mb-2">Thinking in progress</h3>
-      <p id="thinkingMessage" class="thinking-caption">
-        Structuring your input into clearer signals and next-step insight.
-      </p>
-    </div>
-  </div>
-
-  <main class="max-w-5xl mx-auto px-6 py-8 sm:py-10">
-    <nav class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-10">
-      <div class="flex items-center gap-2">
-        <svg width="24" height="24" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-          <circle cx="16" cy="16" r="14" stroke="url(#ng-nav)" stroke-width="2"></circle>
-          <circle cx="16" cy="12" r="3" fill="#00E5A0"></circle>
-          <defs>
-            <linearGradient id="ng-nav" x1="0" y1="0" x2="32" y2="32">
-              <stop stop-color="#00E5A0"></stop>
-              <stop offset="1" stop-color="#7C3AED"></stop>
-            </linearGradient>
-          </defs>
-        </svg>
-        <span class="font-heading font-semibold text-white">COGNATIVE Demo</span>
-      </div>
-
-      <div class="flex items-center gap-3">
-        <a href="/" class="topbar-btn">
-          <i data-lucide="arrow-left" style="width:16px;height:16px;"></i>
-          Back to Home
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="/index.html" aria-label="COGNATIVE home">
+          <span class="brand-mark" aria-hidden="true"></span>
+          <span class="brand-copy">
+            <span class="brand-title">COGNATIVE™</span>
+            <span class="brand-subtitle">Designed for how you think</span>
+          </span>
         </a>
-        <button type="button" class="topbar-btn" onclick="resetSession()">
-          <i data-lucide="rotate-ccw" style="width:16px;height:16px;"></i>
-          Start New Session
-        </button>
+
+        <nav class="nav" aria-label="Primary navigation">
+          <a class="nav-link" href="/index.html#why">Why COGNATIVE</a>
+          <a class="nav-link" href="/index.html#how">How it works</a>
+          <a class="nav-link" href="/index.html#future">Future of thinking</a>
+          <a class="btn btn-ghost" href="/index.html">Back to Home</a>
+          <button class="btn btn-secondary" id="resetFlow">Start New Session</button>
+        </nav>
       </div>
-    </nav>
-
-    <header class="text-center mb-10 sm:mb-12">
-      <p class="text-mint/70 font-heading text-xs sm:text-sm tracking-[0.2em] uppercase mb-5">
-        COGNATIVE Write-First Thinking Session
-      </p>
-
-      <h1 class="font-heading font-extrabold text-4xl sm:text-5xl md:text-6xl text-white leading-tight mb-5">
-        Turn raw thought into<br />
-        <span class="gradient-text">structured intelligence.</span>
-      </h1>
-
-      <p class="max-w-2xl mx-auto text-slate-400 text-base sm:text-lg leading-relaxed">
-        Start with your own words. COGNATIVE helps you surface patterns, challenge assumptions, and move toward clearer decisions.
-      </p>
     </header>
 
-    <div class="flex items-center justify-center gap-3 mb-8" aria-label="Progress">
-      <div id="dot-input" class="step-dot active"></div>
-      <div id="dot-write" class="step-dot"></div>
-      <div id="dot-socratic" class="step-dot"></div>
-      <div id="dot-insight" class="step-dot"></div>
-    </div>
-
-    <section id="step-input" class="glass-card p-6 sm:p-8 fade-in">
-      <div class="flex items-start justify-between gap-4 mb-5">
-        <div>
-          <p class="text-cyan text-xs uppercase tracking-[0.18em] font-heading mb-2">Step 1</p>
-          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white">Start with a real question</h2>
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="hero-card">
+            <div>
+              <div class="eyebrow">COGNATIVE™ Demo Experience</div>
+              <h1><span class="gradient-text">A premium runtime for better thinking.</span></h1>
+              <p class="hero-subhead">
+                This demo shows how COGNATIVE™ guides users through the missing steps behind strong output: writing, reasoning, reflection, prioritization, and execution clarity. The system does not rush to answer. It develops intelligence.
+              </p>
+              <div class="hero-pills">
+                <span class="pill">Intelligence, not just output</span>
+                <span class="pill">Stop reacting. Start thinking.</span>
+                <span class="pill">Write-first reasoning flow</span>
+              </div>
+              <div class="hero-actions">
+                <a class="btn btn-primary" href="#demoRuntime">Enter Demo Runtime</a>
+                <a class="btn btn-secondary" href="/index.html">Return to Landing Page</a>
+              </div>
+            </div>
+            <div class="hero-meta">
+              <div class="micro-card">
+                <div class="micro-label">Category signal</div>
+                <strong>Where thinking becomes intelligence</strong>
+                <p>COGNATIVE™ is building the intelligence platform category around stronger cognition, stronger judgment, and stronger real-world execution.</p>
+              </div>
+              <div class="micro-card">
+                <div class="micro-label">Demo thesis</div>
+                <strong>Reasoning should be visible</strong>
+                <p>People should be able to explain how they arrived at a decision, walk through the tradeoffs, and execute with confidence.</p>
+              </div>
+              <div class="micro-card">
+                <div class="micro-label">Why it matters</div>
+                <strong>Leadership requires executive functioning</strong>
+                <p>Planning, sequencing, reflection, prioritization, and follow-through are core skills. COGNATIVE™ helps rebuild them.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="hidden sm:flex w-12 h-12 rounded-2xl bg-cyan/10 items-center justify-center">
-          <i data-lucide="sparkles" style="width:22px;height:22px;color:#00B4D8;"></i>
+      </section>
+
+      <section class="layout" id="demoRuntime">
+        <div class="container">
+          <div class="shell">
+            <div class="workspace">
+              <div class="workspace-topbar">
+                <div class="workspace-title">
+                  <div class="workspace-kicker">Intelligence Runtime</div>
+                  <h2>Professional decision simulation</h2>
+                  <p>Topic: You are considering two career paths and need to make a thoughtful decision based on values, long-term growth, risk, and execution fit.</p>
+                </div>
+                <div class="toolbar">
+                  <span class="tag">Mode: Professional</span>
+                  <span class="live-badge" id="liveStatus">Thinking in progress</span>
+                </div>
+              </div>
+
+              <div class="stage-switcher" aria-label="Demo flow steps">
+                <button class="step-card active" data-step="0" type="button">
+                  <div class="step-top">
+                    <span class="step-number">01</span>
+                    <span class="step-status">Current</span>
+                  </div>
+                  <h3>Write first</h3>
+                  <p>Start with your own reasoning before the system guides the next layer.</p>
+                </button>
+
+                <button class="step-card" data-step="1" type="button">
+                  <div class="step-top">
+                    <span class="step-number">02</span>
+                    <span class="step-status">Next</span>
+                  </div>
+                  <h3>Guided questions</h3>
+                  <p>Clarify assumptions, tradeoffs, and what matters most in the decision.</p>
+                </button>
+
+                <button class="step-card" data-step="2" type="button">
+                  <div class="step-top">
+                    <span class="step-number">03</span>
+                    <span class="step-status">Next</span>
+                  </div>
+                  <h3>Reflection</h3>
+                  <p>See how reasoning strengthens once the logic is challenged and refined.</p>
+                </button>
+
+                <button class="step-card" data-step="3" type="button">
+                  <div class="step-top">
+                    <span class="step-number">04</span>
+                    <span class="step-status">Next</span>
+                  </div>
+                  <h3>Execution view</h3>
+                  <p>Translate thinking into a clearer decision path and practical next actions.</p>
+                </button>
+              </div>
+
+              <div class="runtime-grid">
+                <section class="panel" id="mainPanel">
+                  <div class="panel-header">
+                    <div>
+                      <div class="panel-kicker" id="panelKicker">Step 01</div>
+                      <h3 id="panelTitle">Start with your own thinking</h3>
+                      <p id="panelDescription">COGNATIVE™ begins with user thinking. Before guidance appears, the user must articulate what they already believe, what they are weighing, and where uncertainty exists.</p>
+                    </div>
+                    <span class="tag" id="panelTag">Write-first AI</span>
+                  </div>
+
+                  <div id="panelContent"></div>
+                </section>
+
+                <aside class="sidebar">
+                  <div class="sidebar-card">
+                    <h4>Reasoning dashboard</h4>
+                    <p>This simulated dashboard shows the kind of cognitive signal COGNATIVE™ can surface during a thinking session.</p>
+                    <div class="score-grid">
+                      <div class="score-box">
+                        <div class="score-value" id="clarityScore">61</div>
+                        <div class="score-label">Clarity</div>
+                      </div>
+                      <div class="score-box">
+                        <div class="score-value" id="depthScore">58</div>
+                        <div class="score-label">Depth</div>
+                      </div>
+                      <div class="score-box">
+                        <div class="score-value" id="structureScore">64</div>
+                        <div class="score-label">Structure</div>
+                      </div>
+                      <div class="score-box">
+                        <div class="score-value" id="readinessScore">49</div>
+                        <div class="score-label">Execution readiness</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="sidebar-card">
+                    <h4>What COGNATIVE™ is strengthening</h4>
+                    <div class="reasoning-list">
+                      <div class="reasoning-item">Decision sequencing</div>
+                      <div class="reasoning-item">Tradeoff awareness</div>
+                      <div class="reasoning-item">Executive functioning discipline</div>
+                      <div class="reasoning-item">Ability to explain the path to action</div>
+                    </div>
+                  </div>
+
+                  <div class="sidebar-card">
+                    <h4>Why this matters</h4>
+                    <p>Future leaders need more than polished output. They need the ability to think through ambiguity, defend choices, and move into execution with sound judgment.</p>
+                  </div>
+                </aside>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="insights">
+        <div class="container">
+          <div class="insights-grid">
+            <article class="insight-card">
+              <div class="insight-kicker">Why this demo matters</div>
+              <h3>Output can hide weak reasoning</h3>
+              <p>When people skip the thinking steps, they lose practice in judgment, planning, prioritization, and executive communication. COGNATIVE™ makes those steps visible again.</p>
+            </article>
+            <article class="insight-card">
+              <div class="insight-kicker">Category differentiation</div>
+              <h3>COGNATIVE™ develops intelligence</h3>
+              <p>Most tools race toward answers. COGNATIVE™ is designed to build the quality of the mind behind the answer.</p>
+            </article>
+            <article class="insight-card">
+              <div class="insight-kicker">Leadership edge</div>
+              <h3>Stronger thinking supports stronger execution</h3>
+              <p>People who can explain their judgment and reason through complexity are more prepared to lead, adapt, and make better calls under pressure.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="container">
+          <div class="cta-wrap">
+            <div>
+              <div class="cta-kicker">Next step</div>
+              <h2><span class="gradient-text">Build a smarter mind.</span></h2>
+              <p>COGNATIVE™ is creating a premium intelligence system for the next generation of thinkers, professionals, and leaders. The future will reward people who can still reason deeply and execute clearly.</p>
+            </div>
+            <div class="cta-box">
+              <a class="btn btn-primary btn-block" href="/index.html">Explore the Full Platform Story</a>
+              <a class="btn btn-secondary btn-block" href="mailto:hello@cognative.app?subject=COGNATIVE%20Demo%20Interest">Request Early Access</a>
+              <div class="cta-note">AI made us faster. COGNATIVE™ makes us smarter. Intelligence, unlocked.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>© <span id="year"></span> COGNATIVE™. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="/index.html">Home</a>
+          <a href="#demoRuntime">Demo Runtime</a>
+          <a href="/index.html#future">Future of thinking</a>
         </div>
       </div>
-
-      <p class="text-slate-400 mb-5 leading-relaxed">
-        What are you trying to figure out right now?
-      </p>
-
-      <textarea
-        id="userInput"
-        placeholder="I need help deciding what college baseball path is right for me..."
-      ></textarea>
-
-      <div class="mt-5 flex flex-wrap gap-3">
-        <button class="btn-primary rounded-full px-6 py-3 font-heading font-semibold" onclick="goToWrite()">
-          Begin Session
-        </button>
-      </div>
-    </section>
-
-    <section id="step-write" class="glass-card p-6 sm:p-8 fade-in hidden-step">
-      <div class="flex items-start justify-between gap-4 mb-5">
-        <div>
-          <p class="text-mint text-xs uppercase tracking-[0.18em] font-heading mb-2">Step 2</p>
-          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white">Write what you already know</h2>
-        </div>
-        <div class="hidden sm:flex w-12 h-12 rounded-2xl bg-mint/10 items-center justify-center">
-          <i data-lucide="pen-line" style="width:22px;height:22px;color:#00E5A0;"></i>
-        </div>
-      </div>
-
-      <div id="writeQuestions" class="space-y-2 text-slate-400 mb-5 leading-relaxed"></div>
-
-      <textarea
-        id="writing"
-        placeholder="Write what you already know in your own words..."
-      ></textarea>
-
-      <div class="mt-5 flex flex-wrap gap-3">
-        <button class="btn-secondary rounded-full px-6 py-3 font-heading font-medium" onclick="goBackToInput()">
-          Back
-        </button>
-        <button class="btn-primary rounded-full px-6 py-3 font-heading font-semibold" onclick="goToSocratic()">
-          Deepen Thinking
-        </button>
-      </div>
-    </section>
-
-    <section id="step-socratic" class="glass-card p-6 sm:p-8 fade-in hidden-step">
-      <div class="flex items-start justify-between gap-4 mb-5">
-        <div>
-          <p class="text-violet text-xs uppercase tracking-[0.18em] font-heading mb-2">Step 3</p>
-          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white">Refine your thinking</h2>
-        </div>
-        <div class="hidden sm:flex w-12 h-12 rounded-2xl bg-violet/10 items-center justify-center">
-          <i data-lucide="git-branch" style="width:22px;height:22px;color:#7C3AED;"></i>
-        </div>
-      </div>
-
-      <div id="socraticQuestions" class="space-y-2 text-slate-400 mb-5 leading-relaxed"></div>
-
-      <textarea
-        id="reflection"
-        placeholder="Refine your thinking here..."
-      ></textarea>
-
-      <div class="mt-5 flex flex-wrap gap-3">
-        <button class="btn-secondary rounded-full px-6 py-3 font-heading font-medium" onclick="goBackToWrite()">
-          Back
-        </button>
-        <button class="btn-primary rounded-full px-6 py-3 font-heading font-semibold" onclick="goToInsight()">
-          Reveal Insight
-        </button>
-      </div>
-    </section>
-
-    <section id="step-insight" class="glass-card p-6 sm:p-8 fade-in hidden-step">
-      <div class="flex items-start justify-between gap-4 mb-6">
-        <div>
-          <p class="text-cyan text-xs uppercase tracking-[0.18em] font-heading mb-2">Step 4</p>
-          <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white">Structured Insight</h2>
-        </div>
-        <div class="hidden sm:flex w-12 h-12 rounded-2xl bg-cyan/10 items-center justify-center">
-          <i data-lucide="brain-circuit" style="width:22px;height:22px;color:#00B4D8;"></i>
-        </div>
-      </div>
-
-      <div class="panel p-5 mb-5">
-        <p class="text-xs text-slate-500 mb-2 uppercase tracking-[0.18em]">Raw Thought</p>
-        <p id="rawThought" class="text-slate-300 italic leading-8"></p>
-      </div>
-
-      <div class="text-center text-cyan text-xs tracking-[0.18em] uppercase mb-5">
-        transformed into structured intelligence
-      </div>
-
-      <div class="grid md:grid-cols-2 gap-5 mb-5">
-        <div class="panel-blue p-5">
-          <p class="text-xs text-cyan mb-3 uppercase tracking-[0.18em]">COGNATIVE Signals</p>
-          <ul id="signalsList" class="space-y-2 text-slate-300 list-disc pl-5 leading-7"></ul>
-        </div>
-
-        <div class="panel-blue p-5">
-          <p class="text-xs text-cyan mb-3 uppercase tracking-[0.18em]">Suggested Paths</p>
-          <ul id="pathsList" class="space-y-2 text-slate-300 list-disc pl-5 leading-7"></ul>
-        </div>
-      </div>
-
-      <div class="panel p-5 mb-6">
-        <p class="text-xs text-slate-500 mb-2 uppercase tracking-[0.18em]">Insight Summary</p>
-        <p id="summaryText" class="text-slate-300 leading-8"></p>
-      </div>
-
-      <div class="flex flex-wrap gap-3">
-        <button class="btn-secondary rounded-full px-6 py-3 font-heading font-medium" onclick="goBackToSocratic()">
-          Back
-        </button>
-        <button class="btn-primary rounded-full px-6 py-3 font-heading font-semibold" onclick="resetSession()">
-          Start New Session
-        </button>
-      </div>
-    </section>
-  </main>
+    </footer>
+  </div>
 
   <script>
-    function setActiveDot(step) {
-      const ids = ["input", "write", "socratic", "insight"];
-      ids.forEach((id) => {
-        const el = document.getElementById(`dot-${id}`);
-        if (el) el.classList.remove("active");
+    const steps = [
+      {
+        kicker: 'Step 01',
+        title: 'Start with your own thinking',
+        description:
+          'COGNATIVE™ begins with user thinking. Before guidance appears, the user must articulate what they already believe, what they are weighing, and where uncertainty exists.',
+        tag: 'Write-first AI',
+        scores: { clarity: 61, depth: 58, structure: 64, readiness: 49 },
+        html: `
+          <div class="prompt-box">
+            <div class="label-row">
+              <div class="box-label">Prompt</div>
+              <span class="tag">Decision input</span>
+            </div>
+            <p class="prompt-text">You are deciding between a stable path with predictable advancement and a more entrepreneurial path with higher upside, higher uncertainty, and stronger alignment with your long-term mission. What is your current thinking?</p>
+          </div>
+          <div class="output-box">
+            <div class="label-row">
+              <div class="box-label">Write-first response</div>
+              <span class="tag">User thinking</span>
+            </div>
+            <textarea class="demo-input" id="userDraft">I am drawn to the entrepreneurial path because it feels more aligned with the kind of work and impact I want long term. I also value stability, and I know predictable income matters. My concern is that if I choose the safer route, I may gain short-term security yet delay the work I actually feel called to build. I need to think more clearly about risk, timing, and what support structure I would need to make a stronger move.</textarea>
+            <div class="thinking-progress">
+              <div class="thinking-dot"></div>
+              <span>Thinking in progress: capturing initial reasoning before system guidance</span>
+            </div>
+            <div class="action-row">
+              <button class="btn btn-primary" type="button" data-advance="1">Continue to guided questions</button>
+              <button class="btn btn-secondary" type="button">Save draft</button>
+            </div>
+          </div>
+        `
+      },
+      {
+        kicker: 'Step 02',
+        title: 'Guided questions make reasoning visible',
+        description:
+          'The system now challenges the initial draft. It helps the user identify priorities, assumptions, constraints, and tradeoffs so the path to a decision becomes more explicit.',
+        tag: 'Think layers',
+        scores: { clarity: 73, depth: 72, structure: 76, readiness: 61 },
+        html: `
+          <div class="prompt-box">
+            <div class="label-row">
+              <div class="box-label">Guided questions</div>
+              <span class="tag">Socratic layer</span>
+            </div>
+            <div class="insight-list">
+              <div class="insight-item">What specific kind of impact matters most to you in the next three years?</div>
+              <div class="insight-item">What level of financial stability do you need in order to think clearly and execute well?</div>
+              <div class="insight-item">What evidence suggests the entrepreneurial path is viable now rather than later?</div>
+              <div class="insight-item">What would regret look like in each direction?</div>
+            </div>
+          </div>
+          <div class="output-box">
+            <div class="label-row">
+              <div class="box-label">Refined reasoning</div>
+              <span class="tag">Decision structure</span>
+            </div>
+            <p>The questions reveal that impact and autonomy matter more to me than title alone. I also realize I need a minimum income threshold to feel grounded. The entrepreneurial path feels right, yet the best version of that path may be a staged transition rather than an immediate leap. My real decision is not only path A or path B. It is how to create a sequence that protects stability while building the long-term direction I actually want.</p>
+            <div class="thinking-progress">
+              <div class="thinking-dot"></div>
+              <span>Thinking in progress: assumptions are being tested and the decision structure is becoming clearer</span>
+            </div>
+            <div class="action-row">
+              <button class="btn btn-primary" type="button" data-advance="2">Move to reflection</button>
+              <button class="btn btn-secondary" type="button" data-advance="0">Back to first draft</button>
+            </div>
+          </div>
+        `
+      },
+      {
+        kicker: 'Step 03',
+        title: 'Reflection strengthens judgment',
+        description:
+          'Reflection helps the user see the difference between impulse and sound reasoning. This step improves memory, self-awareness, and the ability to make a stronger decision with better discipline.',
+        tag: 'Reflection loop',
+        scores: { clarity: 82, depth: 81, structure: 84, readiness: 74 },
+        html: `
+          <div class="reflection-box">
+            <div class="label-row">
+              <div class="box-label">Reflection insight</div>
+              <span class="tag">Executive functioning</span>
+            </div>
+            <p>I can now see that my original thinking framed the decision too narrowly. I was comparing security against purpose instead of designing a progression that supports both. The most useful insight is that my next move should be shaped by sequencing, not emotion. That gives me a more grounded path and a higher-quality decision.</p>
+          </div>
+          <div class="prompt-box">
+            <div class="label-row">
+              <div class="box-label">What improved</div>
+              <span class="tag">Cognitive signal</span>
+            </div>
+            <div class="checkpoint-list">
+              <div class="checkpoint-item">The user identified the real decision behind the visible decision</div>
+              <div class="checkpoint-item">Tradeoffs became explicit rather than assumed</div>
+              <div class="checkpoint-item">A staged strategy emerged in place of reactive thinking</div>
+              <div class="checkpoint-item">The path to execution became more realistic and more defendable</div>
+            </div>
+          </div>
+          <div class="action-row">
+            <button class="btn btn-primary" type="button" data-advance="3">Open execution view</button>
+            <button class="btn btn-secondary" type="button" data-advance="1">Return to guided questions</button>
+          </div>
+        `
+      },
+      {
+        kicker: 'Step 04',
+        title: 'Better thinking produces clearer execution',
+        description:
+          'The session now ends with a more structured decision path. COGNATIVE™ translates improved reasoning into an execution-ready next step, which is where intelligence becomes useful in the real world.',
+        tag: 'Execution clarity',
+        scores: { clarity: 91, depth: 88, structure: 92, readiness: 86 },
+        html: `
+          <div class="output-box">
+            <div class="label-row">
+              <div class="box-label">Decision summary</div>
+              <span class="tag">Execution-ready</span>
+            </div>
+            <p>The strongest current path is a staged transition into the entrepreneurial direction. Maintain stability through a defined income threshold, build a clear runway, validate traction milestones, and create decision checkpoints over the next six months. This path protects focus while moving toward long-term alignment.</p>
+          </div>
+          <div class="prompt-box">
+            <div class="label-row">
+              <div class="box-label">Next actions</div>
+              <span class="tag">Practical execution</span>
+            </div>
+            <div class="checkpoint-list">
+              <div class="checkpoint-item">Define the minimum monthly income needed for a grounded transition</div>
+              <div class="checkpoint-item">Set three traction milestones that validate the entrepreneurial path</div>
+              <div class="checkpoint-item">Create a ninety-day action plan with weekly review points</div>
+              <div class="checkpoint-item">Schedule a follow-up reflection session to assess progress and confidence</div>
+            </div>
+          </div>
+          <div class="reflection-box">
+            <div class="label-row">
+              <div class="box-label">COGNATIVE™ takeaway</div>
+              <span class="tag">Category proof</span>
+            </div>
+            <p>AI can produce an answer quickly. COGNATIVE™ helps build the quality of judgment behind the answer. That difference matters for leadership, learning, and the future of human intelligence.</p>
+          </div>
+          <div class="action-row">
+            <button class="btn btn-primary" type="button" data-advance="0">Start new session</button>
+            <a class="btn btn-secondary" href="/index.html">View full platform story</a>
+          </div>
+        `
+      }
+    ];
+
+    const stepButtons = Array.from(document.querySelectorAll('.step-card'));
+    const panelKicker = document.getElementById('panelKicker');
+    const panelTitle = document.getElementById('panelTitle');
+    const panelDescription = document.getElementById('panelDescription');
+    const panelTag = document.getElementById('panelTag');
+    const panelContent = document.getElementById('panelContent');
+    const clarityScore = document.getElementById('clarityScore');
+    const depthScore = document.getElementById('depthScore');
+    const structureScore = document.getElementById('structureScore');
+    const readinessScore = document.getElementById('readinessScore');
+    const liveStatus = document.getElementById('liveStatus');
+    const resetFlow = document.getElementById('resetFlow');
+
+    function setStep(index) {
+      const step = steps[index];
+      panelKicker.textContent = step.kicker;
+      panelTitle.textContent = step.title;
+      panelDescription.textContent = step.description;
+      panelTag.textContent = step.tag;
+      panelContent.innerHTML = step.html;
+      clarityScore.textContent = step.scores.clarity;
+      depthScore.textContent = step.scores.depth;
+      structureScore.textContent = step.scores.structure;
+      readinessScore.textContent = step.scores.readiness;
+      liveStatus.textContent = index === 3 ? 'Execution view ready' : 'Thinking in progress';
+
+      stepButtons.forEach((button, buttonIndex) => {
+        const status = button.querySelector('.step-status');
+        button.classList.toggle('active', buttonIndex === index);
+        if (status) {
+          status.textContent = buttonIndex === index ? 'Current' : buttonIndex < index ? 'Complete' : 'Next';
+        }
       });
-      const active = document.getElementById(`dot-${step}`);
-      if (active) active.classList.add("active");
+
+      Array.from(panelContent.querySelectorAll('[data-advance]')).forEach((button) => {
+        button.addEventListener('click', () => {
+          const nextIndex = Number(button.getAttribute('data-advance'));
+          setStep(nextIndex);
+          document.getElementById('demoRuntime')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
     }
 
-    function showStep(stepId, dotId) {
-      document.getElementById("step-input").classList.add("hidden-step");
-      document.getElementById("step-write").classList.add("hidden-step");
-      document.getElementById("step-socratic").classList.add("hidden-step");
-      document.getElementById("step-insight").classList.add("hidden-step");
+    stepButtons.forEach((button) => {
+      button.addEventListener('click', () => setStep(Number(button.dataset.step)));
+    });
 
-      const target = document.getElementById(stepId);
-      target.classList.remove("hidden-step");
-      target.classList.add("fade-in");
+    resetFlow.addEventListener('click', () => {
+      setStep(0);
+      document.getElementById('demoRuntime')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 
-      setActiveDot(dotId);
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-
-    function showThinking(message, next) {
-      const overlay = document.getElementById("thinkingOverlay");
-      const thinkingMessage = document.getElementById("thinkingMessage");
-
-      thinkingMessage.textContent = message;
-      overlay.classList.add("visible");
-      overlay.setAttribute("aria-hidden", "false");
-
-      setTimeout(() => {
-        overlay.classList.remove("visible");
-        overlay.setAttribute("aria-hidden", "true");
-        next();
-      }, 900);
-    }
-
-    function detectTopic(input) {
-      const text = input.toLowerCase();
-
-      if (
-        text.includes("baseball") ||
-        text.includes("sport") ||
-        text.includes("athlete") ||
-        text.includes("recruiting")
-      ) return "sports";
-
-      if (
-        text.includes("career") ||
-        text.includes("job") ||
-        text.includes("major") ||
-        text.includes("profession") ||
-        text.includes("work")
-      ) return "career";
-
-      if (
-        text.includes("school") ||
-        text.includes("college") ||
-        text.includes("study") ||
-        text.includes("class") ||
-        text.includes("learn")
-      ) return "education";
-
-      return "general";
-    }
-
-    function getWriteQuestions(topic) {
-      if (topic === "sports") {
-        return [
-          "What do you want most out of this opportunity?",
-          "What are your strengths as a player or competitor?",
-          "What environment helps you perform at your best?"
-        ];
-      }
-      if (topic === "career") {
-        return [
-          "What kind of work energizes you?",
-          "What are you naturally good at?",
-          "What do you not want your day-to-day life to feel like?"
-        ];
-      }
-      if (topic === "education") {
-        return [
-          "What are you trying to understand or decide?",
-          "What do you already know about this subject?",
-          "What part feels unclear or difficult right now?"
-        ];
-      }
-      return [
-        "What are you really trying to figure out?",
-        "What do you already know?",
-        "What feels unclear, difficult, or unresolved?"
-      ];
-    }
-
-    function getSocraticQuestions(topic) {
-      if (topic === "sports") {
-        return [
-          "Why does this goal matter to you personally?",
-          "What tradeoffs are you willing to make to pursue it?",
-          "What kind of team, coach, or culture would bring out your best?"
-        ];
-      }
-      if (topic === "career") {
-        return [
-          "Why do you think those interests matter to you?",
-          "When have you felt most engaged or alive in your work or learning?",
-          "What kind of problems do you enjoy solving repeatedly?"
-        ];
-      }
-      if (topic === "education") {
-        return [
-          "What part of this makes sense to you already?",
-          "What assumptions are you making right now?",
-          "How would you explain this in your own words?"
-        ];
-      }
-      return [
-        "Why do you think this matters?",
-        "What patterns do you notice in your own response?",
-        "What would greater clarity look like here?"
-      ];
-    }
-
-    function generateSignals(topic, writing, reflection) {
-      const combined = (writing + " " + reflection).toLowerCase();
-      const signals = [];
-
-      if (combined.includes("people") || combined.includes("team") || combined.includes("helping") || combined.includes("lead")) {
-        signals.push("Strong people and relationship orientation");
-      }
-      if (combined.includes("strategy") || combined.includes("plan") || combined.includes("vision") || combined.includes("organize")) {
-        signals.push("Strategic and structured thinking tendency");
-      }
-      if (combined.includes("compete") || combined.includes("win") || combined.includes("perform") || combined.includes("athlete")) {
-        signals.push("High performance and competitive drive");
-      }
-      if (combined.includes("psychology") || combined.includes("behavior") || combined.includes("mind")) {
-        signals.push("Interest in human behavior and motivation");
-      }
-      if (combined.includes("repetitive") || combined.includes("routine") || combined.includes("boring")) {
-        signals.push("Low tolerance for repetitive environments");
-      }
-      if (combined.includes("clarity") || combined.includes("purpose") || combined.includes("direction")) {
-        signals.push("Strong need for clarity, purpose, and alignment");
-      }
-
-      if (signals.length === 0) {
-        if (topic === "sports") {
-          signals.push("You are exploring identity, fit, and performance environment");
-          signals.push("You appear motivated by growth, opportunity, and alignment");
-        } else if (topic === "career") {
-          signals.push("You are exploring fit, motivation, and long-term direction");
-          signals.push("You appear to want work that feels aligned, not automatic");
-        } else if (topic === "education") {
-          signals.push("You are trying to turn uncertainty into understanding");
-          signals.push("You appear to learn best through reflection and structured thought");
-        } else {
-          signals.push("You are looking for deeper clarity, not surface-level answers");
-          signals.push("You appear willing to reflect in order to make a better decision");
-        }
-      }
-
-      return signals.slice(0, 4);
-    }
-
-    function generatePaths(topic, writing, reflection) {
-      const combined = (writing + " " + reflection).toLowerCase();
-
-      if (topic === "sports") {
-        const paths = [
-          "College program environments that match your performance style",
-          "Athletic pathways that balance competition, development, and fit",
-          "Roles connected to sports leadership, team culture, or sports management"
-        ];
-        if (combined.includes("lead")) {
-          paths.unshift("Team-centered environments where leadership matters");
-        }
-        return paths.slice(0, 4);
-      }
-
-      if (topic === "career") {
-        const paths = [
-          "Roles involving people, leadership, and communication",
-          "Behavioral, psychology, or coaching-related paths",
-          "Strategy, operations, or business-facing problem-solving roles"
-        ];
-        if (combined.includes("law")) {
-          paths.unshift("Law, advocacy, or policy-adjacent environments");
-        }
-        return paths.slice(0, 4);
-      }
-
-      if (topic === "education") {
-        return [
-          "A clearer learning path based on what you already understand",
-          "Focused study areas where deeper reasoning is needed",
-          "A more structured way to translate confusion into mastery"
-        ];
-      }
-
-      return [
-        "A clearer direction based on your own words",
-        "Better-fit paths shaped by your motivations and patterns",
-        "A more intentional next step instead of reactive movement"
-      ];
-    }
-
-    function generateSummary(topic) {
-      if (topic === "sports") {
-        return "Your thinking suggests this is not just about playing - it is about finding the right environment, identity fit, and performance path.";
-      }
-      if (topic === "career") {
-        return "Your responses point toward alignment, authenticity, and long-term fit rather than simply choosing the next obvious option.";
-      }
-      if (topic === "education") {
-        return "Your responses show that deeper understanding comes when you externalize what you know first and then build from there.";
-      }
-      return "Your responses show that clarity improves when your thinking is made visible, challenged, and structured.";
-    }
-
-    function goToWrite() {
-      const input = document.getElementById("userInput").value.trim();
-      const topic = detectTopic(input);
-      const questions = getWriteQuestions(topic);
-
-      document.getElementById("writeQuestions").innerHTML = questions.map(q => `<p>${q}</p>`).join("");
-
-      showThinking(
-        "COGNATIVE is identifying the shape of your question and preparing your write-first prompts.",
-        () => showStep("step-write", "write")
-      );
-    }
-
-    function goToSocratic() {
-      const input = document.getElementById("userInput").value.trim();
-      const topic = detectTopic(input);
-      const questions = getSocraticQuestions(topic);
-
-      document.getElementById("socraticQuestions").innerHTML = questions.map(q => `<p>${q}</p>`).join("");
-
-      showThinking(
-        "COGNATIVE is reviewing your initial thinking and preparing deeper Socratic prompts.",
-        () => showStep("step-socratic", "socratic")
-      );
-    }
-
-    function goToInsight() {
-      const input = document.getElementById("userInput").value.trim();
-      const writing = document.getElementById("writing").value.trim();
-      const reflection = document.getElementById("reflection").value.trim();
-      const topic = detectTopic(input);
-
-      const signals = generateSignals(topic, writing, reflection);
-      const paths = generatePaths(topic, writing, reflection);
-      const summary = generateSummary(topic);
-
-      document.getElementById("rawThought").textContent = writing || "No initial writing captured yet.";
-      document.getElementById("signalsList").innerHTML = signals.map(s => `<li>${s}</li>`).join("");
-      document.getElementById("pathsList").innerHTML = paths.map(p => `<li>${p}</li>`).join("");
-      document.getElementById("summaryText").textContent = summary;
-
-      showThinking(
-        "COGNATIVE is structuring your input into cognitive signals, possible paths, and clearer next-step insight.",
-        () => showStep("step-insight", "insight")
-      );
-    }
-
-    function goBackToInput() {
-      showStep("step-input", "input");
-    }
-
-    function goBackToWrite() {
-      showStep("step-write", "write");
-    }
-
-    function goBackToSocratic() {
-      showStep("step-socratic", "socratic");
-    }
-
-    function resetSession() {
-      document.getElementById("userInput").value = "";
-      document.getElementById("writing").value = "";
-      document.getElementById("reflection").value = "";
-      showStep("step-input", "input");
-    }
-
-    lucide.createIcons();
+    setStep(0);
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
