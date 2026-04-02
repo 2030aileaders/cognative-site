@@ -1,1 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+  <title>AI Thinking Platform | Cognative</title>
+  <meta name="description" content="Cognative is an AI thinking platform designed to improve reasoning, clarity, and decision-making. Think first. Then use AI." />
+
+  <link rel="canonical" href="https://cognative.app/ai-thinking-platform/" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #061827;
+      color: #ffffff;
+      line-height: 1.6;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 40px;
+      font-size: 1.6rem;
+    }
+
+    p {
+      color: #cbd5f5;
+      margin-bottom: 16px;
+    }
+
+    .cta {
+      margin-top: 40px;
+      padding: 14px 22px;
+      background: #00b4d8;
+      color: #061827;
+      text-decoration: none;
+      border-radius: 8px;
+      display: inline-block;
+      font-weight: bold;
+    }
+
+    .logo {
+      margin-bottom: 30px;
+    }
+
+    .logo img {
+      height: 48px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="logo">
+    <img src="/wordmark-logo.png" alt="Cognative logo" />
+  </div>
+
+  <h1>AI Thinking Platform</h1>
+
+  <p>
+    Cognative is an AI thinking platform designed to improve how people think, reason, and make decisions.
+  </p>
+
+  <p>
+    Most AI tools give answers. Cognative focuses on the step before that.
+  </p>
+
+  <p>
+    Thinking.
+  </p>
+
+  <h2>The Problem</h2>
+
+  <p>
+    AI made answers fast. But speed did not improve decision-making.
+  </p>
+
+  <p>
+    People are skipping the thinking step and jumping straight to output.
+  </p>
+
+  <h2>The Shift</h2>
+
+  <p>
+    Better outcomes start with better thinking.
+  </p>
+
+  <p>
+    Thinking is a skill. It can be trained.
+  </p>
+
+  <h2>How Cognative Works</h2>
+
+  <p>
+    Cognative uses a write-first approach that forces users to think through problems before AI responds.
+  </p>
+
+  <p>
+    This builds clarity, strengthens reasoning, and improves decision quality over time.
+  </p>
+
+  <h2>Why It Matters</h2>
+
+  <p>
+    In a world driven by AI, the real advantage is not access to answers.
+  </p>
+
+  <p>
+    It is the ability to think clearly and make better decisions.
+  </p>
+
+  <a class="cta" href="https://cognative.app">Explore Cognative</a>
+
+</div>
+
+</body>
+</html>
