@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+
   <style>
     :root {
       --navy: #061827;
@@ -41,6 +42,7 @@
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+
     body {
       margin: 0;
       font-family: 'DM Sans', system-ui, sans-serif;
@@ -139,32 +141,61 @@
     .topbar-inner {
       width: min(calc(100% - 32px), var(--max));
       margin: 0 auto;
-      min-height: 78px;
+      min-height: 98px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 16px;
     }
 
-    .brand { display: flex; align-items: center; gap: 14px; color: inherit; text-decoration: none; }
-    .brand-mark {
-      width: 44px;
-      height: 44px;
-      display: grid;
-      place-items: center;
-      border-radius: 12px;
-      background: linear-gradient(135deg, rgba(0,229,160,.14), rgba(0,180,216,.14) 42%, rgba(124,58,237,.16));
-      border: 1px solid rgba(255,255,255,.08);
-      box-shadow: 0 0 30px rgba(0,180,216,.12);
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+      min-width: 0;
+      flex: 0 1 auto;
+    }
+
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
+
+    .brand-wordmark {
+      width: auto;
+      height: 118px;
+      max-width: min(42vw, 420px);
+      object-fit: contain;
+      display: block;
       flex: 0 0 auto;
     }
 
-    .brand-mark svg { width: 24px; height: 24px; }
-    .brand-title { font: 800 1rem 'Syne', sans-serif; letter-spacing: .16em; text-transform: uppercase; color: #fff; display:block; }
-    .brand-subtitle { display:block; color: var(--muted); font-size: .8rem; margin-top: 2px; }
+    .brand-subtitle {
+      display: block;
+      color: var(--muted);
+      font-size: .82rem;
+      margin-top: 4px;
+      line-height: 1.2;
+    }
 
-    .nav { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-    .nav-link { color: var(--muted); text-decoration:none; font-size:.94rem; padding:10px 12px; }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      color: var(--muted);
+      text-decoration:none;
+      font-size:.94rem;
+      padding:10px 12px;
+    }
+
     .nav-link:hover { color: #fff; }
 
     .btn {
@@ -182,21 +213,28 @@
       cursor: pointer;
       background: transparent;
       color: inherit;
+      font-family: inherit;
+      font-size: .96rem;
     }
 
     .btn:hover { transform: translateY(-2px); }
+
     .btn-primary {
       color: #061827;
       background: linear-gradient(135deg, #00E5A0, #00B4D8);
       box-shadow: 0 0 30px rgba(0,229,160,.22);
     }
+
     .btn-primary:hover { box-shadow: 0 0 34px rgba(0,229,160,.34); }
+
     .btn-secondary {
       color: #d6f5ee;
       border-color: rgba(0,229,160,.28);
       background: rgba(0,229,160,.05);
     }
+
     .btn-secondary:hover { background: rgba(0,229,160,.1); border-color: rgba(0,229,160,.45); }
+
     .btn-ghost {
       color: #d6e6fb;
       border-color: rgba(255,255,255,.08);
@@ -204,6 +242,7 @@
     }
 
     .hero { padding: 40px 0 20px; }
+
     .hero-card {
       border-radius: 18px;
       padding: 28px;
@@ -214,41 +253,95 @@
     }
 
     .eyebrow {
-      display:inline-flex; align-items:center; gap:10px; width: fit-content;
-      padding: 10px 14px; border-radius: 12px; border:1px solid rgba(0,229,160,.18);
-      color:#9eeddb; background: rgba(0,229,160,.05); font:700 .78rem 'Syne',sans-serif; letter-spacing:.14em; text-transform:uppercase;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      width: fit-content;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border:1px solid rgba(0,229,160,.18);
+      color:#9eeddb;
+      background: rgba(0,229,160,.05);
+      font:700 .78rem 'Syne',sans-serif;
+      letter-spacing:.14em;
+      text-transform:uppercase;
       margin-bottom: 18px;
     }
-    .eyebrow::before { content:''; width:8px; height:8px; border-radius:50%; background:var(--mint); box-shadow:0 0 18px rgba(0,229,160,.7); }
+
+    .eyebrow::before {
+      content:'';
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:var(--mint);
+      box-shadow:0 0 18px rgba(0,229,160,.7);
+    }
 
     h1,h2,h3,h4,p { margin:0; }
-    .hero h1 { font-size: clamp(2.5rem, 4.6vw, 4.8rem); line-height: .96; letter-spacing: -.05em; max-width: 12ch; }
-    .hero p { color:#c2d3ed; line-height:1.82; font-size:1rem; }
 
-    .hero-meta { display:grid; gap:14px; }
+    .hero h1 {
+      font-size: clamp(2.5rem, 4.6vw, 4.8rem);
+      line-height: .96;
+      letter-spacing: -.05em;
+      max-width: 12ch;
+    }
+
+    .hero p {
+      color:#c2d3ed;
+      line-height:1.82;
+      font-size:1rem;
+    }
+
+    .hero-meta {
+      display:grid;
+      gap:14px;
+    }
+
     .micro {
       padding: 18px;
       border-radius: 14px;
       border:1px solid rgba(255,255,255,.06);
       background: rgba(255,255,255,.025);
     }
-    .micro strong { display:block; color:#fff; margin-bottom:8px; font-size:1rem; }
-    .micro span { display:block; color:var(--muted); line-height:1.65; font-size:.9rem; }
 
-    .hero-logo-row public/wordmark.png {
+    .micro strong {
+      display:block;
+      color:#fff;
+      margin-bottom:8px;
+      font-size:1rem;
+    }
+
+    .micro span {
+      display:block;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:.9rem;
+    }
+
+    .hero-logo-row {
       margin-top: 18px;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       color: #8fbcd4;
       font-size: .84rem;
       letter-spacing: .04em;
+      flex-wrap: wrap;
     }
-    .hero-logo-row public/wordmark.png svg { width: 18px; height: 18px; }
+
+    .hero-logo-row img {
+      width: auto;
+      height: 118px;
+      max-width: min(40vw, 380px);
+      object-fit: contain;
+      display: block;
+      flex: 0 0 auto;
+    }
 
     .demo {
       padding: 10px 0 24px;
     }
+
     .demo-grid {
       display:grid;
       grid-template-columns: minmax(0, 1.12fr) minmax(280px, .88fr);
@@ -256,7 +349,10 @@
       align-items:start;
     }
 
-    .demo-panel, .sidebar-panel, .explain-panel, .insight-panel, .cta-card { border-radius: 18px; }
+    .demo-panel, .sidebar-panel, .explain-panel, .insight-panel, .cta-card, .modal-card {
+      border-radius: 18px;
+    }
+
     .demo-panel { padding: 24px; }
     .sidebar-panel, .explain-panel, .insight-panel { padding: 22px; }
 
@@ -268,6 +364,7 @@
       flex-wrap:wrap;
       margin-bottom:18px;
     }
+
     .panel-kicker {
       color:#9ed6df;
       font:700 .8rem 'Syne',sans-serif;
@@ -275,11 +372,14 @@
       text-transform:uppercase;
       margin-bottom:8px;
     }
+
     .panel-header h2, .panel-header h3 {
       color:#fff;
       letter-spacing:-.03em;
     }
+
     .panel-header h2 { font-size: 1.7rem; }
+
     .panel-header p {
       color: var(--muted);
       line-height:1.7;
@@ -299,6 +399,7 @@
       font-size:.8rem;
       font-weight:700;
     }
+
     .live-badge::before {
       content:'';
       width:8px;
@@ -328,6 +429,7 @@
     }
 
     .stage-btn:hover { transform: translateY(-1px); border-color: rgba(0,180,216,.24); }
+
     .stage-btn.active {
       border-color: rgba(0,229,160,.3);
       background: linear-gradient(180deg, rgba(0,229,160,.06), rgba(255,255,255,.02));
@@ -347,8 +449,19 @@
       margin-bottom:12px;
     }
 
-    .stage-btn strong { display:block; color:#fff; font-size:1rem; margin-bottom:8px; }
-    .stage-btn span:last-child { display:block; color:var(--muted); font-size:.86rem; line-height:1.55; }
+    .stage-btn strong {
+      display:block;
+      color:#fff;
+      font-size:1rem;
+      margin-bottom:8px;
+    }
+
+    .stage-btn span:last-child {
+      display:block;
+      color:var(--muted);
+      font-size:.86rem;
+      line-height:1.55;
+    }
 
     .prompt-box, .info-box, .result-box {
       padding: 18px;
@@ -367,7 +480,11 @@
       flex-wrap:wrap;
     }
 
-    .box-label { color:#d9e8ff; font-weight:700; font-size:.92rem; }
+    .box-label {
+      color:#d9e8ff;
+      font-weight:700;
+      font-size:.92rem;
+    }
 
     .tag {
       display:inline-flex;
@@ -393,6 +510,8 @@
       color:#edf4ff;
       outline:none;
       line-height:1.75;
+      font-family: inherit;
+      font-size: .96rem;
     }
 
     .demo-input:focus {
@@ -420,11 +539,23 @@
       animation: pulse 1.4s ease-in-out infinite;
     }
 
-    .thinking-row span { color:#d5f5eb; font-size:.92rem; font-weight:600; }
+    .thinking-row span {
+      color:#d5f5eb;
+      font-size:.92rem;
+      font-weight:600;
+    }
 
-    .action-row { display:flex; gap:12px; flex-wrap:wrap; margin-top: 16px; }
+    .action-row {
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top: 16px;
+    }
 
-    .sidebar { display:grid; gap:16px; }
+    .sidebar {
+      display:grid;
+      gap:16px;
+    }
 
     .score-grid {
       display:grid;
@@ -440,22 +571,79 @@
       background: rgba(255,255,255,.025);
     }
 
-    .score strong { display:block; font-size:1.45rem; color:#fff; letter-spacing:-.04em; }
-    .score span { display:block; margin-top:6px; color:var(--muted); font-size:.84rem; line-height:1.5; }
+    .score strong {
+      display:block;
+      font-size:1.45rem;
+      color:#fff;
+      letter-spacing:-.04em;
+    }
 
-    .bullet-list { display:grid; gap:10px; margin-top: 12px; }
-    .bullet-item { display:flex; gap:10px; align-items:flex-start; color:#dce8fb; font-size:.92rem; line-height:1.62; }
-    .bullet-item::before { content:'•'; color: var(--mint); font-size: 1.05rem; line-height:1.2; }
+    .score span {
+      display:block;
+      margin-top:6px;
+      color:var(--muted);
+      font-size:.84rem;
+      line-height:1.5;
+    }
 
-    .explain { padding: 8px 0 26px; }
-    .explain-grid { display:grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap:16px; }
-    .explain-panel h3, .insight-panel h3 { font-size:1.18rem; color:#fff; margin-bottom: 10px; }
-    .explain-panel p, .insight-panel p { color:var(--muted); line-height:1.8; font-size:.96rem; }
+    .bullet-list {
+      display:grid;
+      gap:10px;
+      margin-top: 12px;
+    }
 
-    .insights { padding: 0 0 26px; }
-    .insight-grid { display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:16px; }
+    .bullet-item {
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+      color:#dce8fb;
+      font-size:.92rem;
+      line-height:1.62;
+    }
 
-    .cta { padding: 8px 0 80px; }
+    .bullet-item::before {
+      content:'•';
+      color: var(--mint);
+      font-size: 1.05rem;
+      line-height:1.2;
+    }
+
+    .explain {
+      padding: 8px 0 26px;
+    }
+
+    .explain-grid {
+      display:grid;
+      grid-template-columns: minmax(0,1fr) minmax(0,1fr);
+      gap:16px;
+    }
+
+    .explain-panel h3, .insight-panel h3 {
+      font-size:1.18rem;
+      color:#fff;
+      margin-bottom: 10px;
+    }
+
+    .explain-panel p, .insight-panel p {
+      color:var(--muted);
+      line-height:1.8;
+      font-size:.96rem;
+    }
+
+    .insights {
+      padding: 0 0 26px;
+    }
+
+    .insight-grid {
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:16px;
+    }
+
+    .cta {
+      padding: 8px 0 80px;
+    }
+
     .cta-card {
       padding: 30px;
       display:grid;
@@ -464,8 +652,19 @@
       align-items:center;
     }
 
-    .cta-card h2 { font-size: clamp(2.1rem, 4vw, 4rem); line-height: 1; letter-spacing:-.04em; margin-bottom: 14px; max-width: 11ch; }
-    .cta-card p { color:#c4d3ea; line-height:1.82; font-size:1rem; }
+    .cta-card h2 {
+      font-size: clamp(2.1rem, 4vw, 4rem);
+      line-height: 1;
+      letter-spacing:-.04em;
+      margin-bottom: 14px;
+      max-width: 11ch;
+    }
+
+    .cta-card p {
+      color:#c4d3ea;
+      line-height:1.82;
+      font-size:1rem;
+    }
 
     .cta-box {
       padding: 22px;
@@ -476,9 +675,16 @@
 
     .cta-box .btn { width:100%; }
     .cta-box .btn + .btn { margin-top: 12px; }
-    .cta-note { margin-top: 14px; color: var(--muted); font-size:.9rem; line-height:1.6; }
+
+    .cta-note {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size:.9rem;
+      line-height:1.6;
+    }
 
     footer { padding: 0 0 36px; }
+
     .footer-inner {
       width:min(calc(100% - 32px), var(--max));
       margin:0 auto;
@@ -493,21 +699,121 @@
       font-size:.92rem;
     }
 
-    .footer-links { display:flex; align-items:center; gap:16px; flex-wrap:wrap; }
-    .footer-links a { color:inherit; text-decoration:none; }
-    .footer-links a:hover { color:#fff; }
-
     .footer-brand {
       display:flex;
       align-items:center;
-      gap:10px;
+      gap:12px;
       color:var(--muted);
     }
 
-    .footer-brand svg { width:18px; height:18px; }
+    .footer-brand img {
+      width: auto;
+      height: 118px;
+      max-width: 260px;
+      object-fit: contain;
+      display: block;
+      flex: 0 0 auto;
+    }
+
+    .footer-links {
+      display:flex;
+      align-items:center;
+      gap:16px;
+      flex-wrap:wrap;
+    }
+
+    .footer-links a {
+      color:inherit;
+      text-decoration:none;
+    }
+
+    .footer-links a:hover { color:#fff; }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 8, 18, .78);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 100;
+    }
+
+    .modal-overlay.active { display: flex; }
+
+    .modal-card {
+      width: min(100%, 560px);
+      padding: 26px;
+    }
+
+    .modal-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .modal-close {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .waitlist-form {
+      display: grid;
+      gap: 14px;
+    }
+
+    .field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .field label {
+      font-size: .9rem;
+      color: #d8e7fb;
+      font-weight: 700;
+    }
+
+    .field input,
+    .field textarea {
+      width: 100%;
+      border-radius: 12px;
+      padding: 14px 14px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      color: #edf4ff;
+      outline: none;
+      font: inherit;
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(0,229,160,.4);
+      box-shadow: 0 0 0 4px rgba(0,229,160,.08);
+    }
+
+    .waitlist-note {
+      color: var(--muted);
+      font-size: .88rem;
+      line-height: 1.6;
+    }
 
     @media (max-width: 1100px) {
-      .hero-card, .demo-grid, .explain-grid, .insight-grid, .cta-card, .stage-switcher {
+      .hero-card,
+      .demo-grid,
+      .explain-grid,
+      .insight-grid,
+      .cta-card,
+      .stage-switcher {
         grid-template-columns: 1fr;
       }
     }
@@ -519,20 +825,46 @@
         flex-direction:column;
         align-items:stretch;
       }
+
       .nav { justify-content:flex-start; }
-      .hero-card, .demo-panel, .sidebar-panel, .explain-panel, .insight-panel, .cta-card {
+
+      .hero-card,
+      .demo-panel,
+      .sidebar-panel,
+      .explain-panel,
+      .insight-panel,
+      .cta-card,
+      .modal-card {
         padding: 22px;
       }
+
       .score-grid { grid-template-columns: 1fr 1fr; }
+
+      .brand-wordmark,
+      .hero-logo-row img,
+      .footer-brand img {
+        height: 86px;
+        max-width: 300px;
+      }
     }
 
     @media (max-width: 560px) {
-      .container, .topbar-inner, .footer-inner {
+      .container,
+      .topbar-inner,
+      .footer-inner {
         width:min(calc(100% - 20px), var(--max));
       }
+
       .btn { width:100%; }
       .action-row { gap:10px; }
       .score-grid { grid-template-columns: 1fr; }
+
+      .brand-wordmark,
+      .hero-logo-row img,
+      .footer-brand img {
+        height: 64px;
+        max-width: 220px;
+      }
     }
   </style>
 </head>
@@ -541,24 +873,8 @@
     <header class="topbar">
       <div class="topbar-inner">
         <a class="brand" href="/">
-          <span class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" fill="none">
-              <circle cx="16" cy="16" r="13" stroke="url(#g1)" stroke-width="2"></circle>
-              <circle cx="16" cy="11.5" r="3" fill="#00E5A0"></circle>
-              <circle cx="10" cy="20" r="2" fill="#00B4D8"></circle>
-              <circle cx="22" cy="20" r="2" fill="#7C3AED"></circle>
-              <line x1="16" y1="11.5" x2="10" y2="20" stroke="#00E5A0" stroke-opacity=".5"></line>
-              <line x1="16" y1="11.5" x2="22" y2="20" stroke="#7C3AED" stroke-opacity=".5"></line>
-              <defs>
-                <linearGradient id="g1" x1="0" y1="0" x2="32" y2="32">
-                  <stop stop-color="#00E5A0"></stop>
-                  <stop offset="1" stop-color="#7C3AED"></stop>
-                </linearGradient>
-              </defs>
-            </svg>
-          </span>
-          <span>
-            <span class="brand-title">COGNATIVE™</span>
+          <span class="brand-copy">
+            <img class="brand-wordmark" src="/wordmark-logo.png" alt="COGNATIVE wordmark" />
             <span class="brand-subtitle">Intelligence, unlocked.</span>
           </span>
         </a>
@@ -580,20 +896,10 @@
               <div class="eyebrow">COGNATIVE™ Demo Experience</div>
               <h1 class="font-heading">Try the demo first. <span class="gradient-text">See the explanation after.</span></h1>
               <p class="fade-up-d1">This page is designed so users can immediately test the write-first runtime before reading the deeper explanation below.</p>
-              <div class="hero-logo-row public/wordmark.png fade-up-d2">
-                <svg viewBox="0 0 32 32" fill="none">
-                  <circle cx="16" cy="16" r="13" stroke="url(#g2)" stroke-width="2"></circle>
-                  <circle cx="16" cy="11.5" r="3" fill="#00E5A0"></circle>
-                  <circle cx="10" cy="20" r="2" fill="#00B4D8"></circle>
-                  <circle cx="22" cy="20" r="2" fill="#7C3AED"></circle>
-                  <defs>
-                    <linearGradient id="g2" x1="0" y1="0" x2="32" y2="32">
-                      <stop stop-color="#00E5A0"></stop>
-                      <stop offset="1" stop-color="#7C3AED"></stop>
-                    </linearGradient>
-                  </defs>
-                </svg>
-                COGNATIVE™ Write-First Intelligence Runtime
+
+              <div class="hero-logo-row fade-up-d2">
+                <img src="/wordmark-logo.png" alt="COGNATIVE wordmark" />
+                <span>COGNATIVE™ Write-First Intelligence Runtime</span>
               </div>
             </div>
 
@@ -615,7 +921,6 @@
         </div>
       </section>
 
-      <!-- DEMO FIRST -->
       <section class="demo" id="demoRuntime">
         <div class="container demo-grid">
           <section class="panel demo-panel shimmer-border">
@@ -681,7 +986,6 @@
         </div>
       </section>
 
-      <!-- EXPLANATION BELOW -->
       <section class="explain">
         <div class="container explain-grid">
           <article class="panel explain-panel">
@@ -728,7 +1032,7 @@
             </div>
             <div class="cta-box">
               <a class="btn btn-primary" href="/">Explore the Full Platform Story</a>
-              <a class="btn btn-secondary" href="mailto:hello@cognative.app?subject=COGNATIVE%20Demo%20Interest">Request Early Access</a>
+              <button class="btn btn-secondary" type="button" data-open-waitlist>Get Early Access</button>
               <div class="cta-note">AI made us faster. COGNATIVE™ makes us smarter. Intelligence, unlocked.</div>
             </div>
           </div>
@@ -739,19 +1043,7 @@
     <footer>
       <div class="footer-inner">
         <div class="footer-brand">
-          <svg viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="13" stroke="url(#g3)" stroke-width="2"></circle>
-            <circle cx="16" cy="11.5" r="3" fill="#00E5A0"></circle>
-            <circle cx="10" cy="20" r="2" fill="#00B4D8"></circle>
-            <circle cx="22" cy="20" r="2" fill="#7C3AED"></circle>
-            <defs>
-              <linearGradient id="g3" x1="0" y1="0" x2="32" y2="32">
-                <stop stop-color="#00E5A0"></stop>
-                <stop offset="1" stop-color="#7C3AED"></stop>
-              </linearGradient>
-            </defs>
-          </svg>
-          <span>© <span id="year"></span> COGNATIVE™</span>
+          <img src="/wordmark-logo.png" alt="COGNATIVE wordmark" />
         </div>
 
         <div class="footer-links">
@@ -763,7 +1055,51 @@
     </footer>
   </div>
 
+  <div class="modal-overlay" id="waitlistModal" aria-hidden="true">
+    <div class="panel modal-card shimmer-border">
+      <div class="modal-top">
+        <div>
+          <div class="panel-kicker">Early Access</div>
+          <h3 class="font-heading" style="font-size:1.6rem;color:#fff;margin-bottom:8px;">Join the COGNATIVE™ waitlist</h3>
+          <p style="color:var(--muted);line-height:1.75;font-size:.96rem;">
+            Fill this out and continue to the Google waitlist form.
+          </p>
+        </div>
+        <button class="modal-close" type="button" id="closeWaitlist" aria-label="Close waitlist form">✕</button>
+      </div>
+
+      <form class="waitlist-form" id="waitlistForm">
+        <div class="field">
+          <label for="waitlist-name">Name</label>
+          <input id="waitlist-name" name="name" type="text" placeholder="Your name" required />
+        </div>
+
+        <div class="field">
+          <label for="waitlist-email">Email</label>
+          <input id="waitlist-email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="field">
+          <label for="waitlist-role">What best describes you?</label>
+          <input id="waitlist-role" name="role" type="text" placeholder="Student, professional, educator, builder..." />
+        </div>
+
+        <div class="field">
+          <label for="waitlist-interest">What are you hoping COGNATIVE™ helps you do?</label>
+          <textarea id="waitlist-interest" name="interest" rows="4" placeholder="Thinking clarity, better decisions, structured learning, career direction..."></textarea>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Continue to Google Form</button>
+        <div class="waitlist-note">
+          This opens the Google waitlist form in a new tab.
+        </div>
+      </form>
+    </div>
+  </div>
+
   <script>
+    const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSdk_zbqnZSY3oS473SVoT9zbI06XgPES1j3IQblkhWCzvhJJg/viewform?usp=sharing&ouid=101320479248879254676';
+
     const steps = [
       {
         scores: { clarity: 61, depth: 58, structure: 64, readiness: 49 },
@@ -901,6 +1237,58 @@
     const readinessScore = document.getElementById('readinessScore');
     const stepButtons = Array.from(document.querySelectorAll('.stage-btn'));
     const resetFlow = document.getElementById('resetFlow');
+
+    const waitlistModal = document.getElementById('waitlistModal');
+    const openWaitlistButtons = document.querySelectorAll('[data-open-waitlist]');
+    const closeWaitlist = document.getElementById('closeWaitlist');
+    const waitlistForm = document.getElementById('waitlistForm');
+
+    function openWaitlist() {
+      waitlistModal.classList.add('active');
+      waitlistModal.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeWaitlistModal() {
+      waitlistModal.classList.remove('active');
+      waitlistModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    openWaitlistButtons.forEach((btn) => {
+      btn.addEventListener('click', openWaitlist);
+    });
+
+    closeWaitlist.addEventListener('click', closeWaitlistModal);
+
+    waitlistModal.addEventListener('click', (e) => {
+      if (e.target === waitlistModal) closeWaitlistModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && waitlistModal.classList.contains('active')) {
+        closeWaitlistModal();
+      }
+    });
+
+    waitlistForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('waitlist-name').value.trim();
+      const email = document.getElementById('waitlist-email').value.trim();
+      const role = document.getElementById('waitlist-role').value.trim();
+      const interest = document.getElementById('waitlist-interest').value.trim();
+
+      try {
+        sessionStorage.setItem('cognative_waitlist_name', name);
+        sessionStorage.setItem('cognative_waitlist_email', email);
+        sessionStorage.setItem('cognative_waitlist_role', role);
+        sessionStorage.setItem('cognative_waitlist_interest', interest);
+      } catch (err) {}
+
+      window.open(GOOGLE_FORM_URL, '_blank', 'noopener,noreferrer');
+      closeWaitlistModal();
+    });
 
     function setStep(index) {
       const step = steps[index];
