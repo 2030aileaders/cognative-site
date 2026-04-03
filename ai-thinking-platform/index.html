@@ -129,7 +129,6 @@
     }
 
     @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-    @keyframes pulse { 0%,100% { transform: scale(1); opacity: .9; } 50% { transform: scale(1.18); opacity: 1; } }
 
     .shimmer-border { position: relative; }
     .shimmer-border::before {
@@ -176,87 +175,53 @@
     .topbar-inner {
       width: min(calc(100% - 32px), var(--max));
       margin: 0 auto;
-      min-height: 78px;
+      min-height: 88px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 18px;
     }
 
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  color: inherit;
-  text-decoration: none;
-  min-width: 0;
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: inherit;
+      text-decoration: none;
+      min-width: 0;
+      flex: 0 1 auto;
+    }
 
-.brand-mark-wrap {
-  width: 118px;
-  height: 118px;
-  flex: 0 0 118px;
-  display: grid;
-  place-items: center;
-  overflow: visible;
-}
+    .brand-wordmark {
+      width: auto;
+      height: 118px;
+      max-width: min(40vw, 420px);
+      object-fit: contain;
+      display: block;
+      flex: 0 0 auto;
+    }
 
-.brand-mark-img {
-  width: 118px;
-  height: 118px;
-  object-fit: contain;
-  display: block;
-}
+    .brand-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 0;
+    }
 
-.brand-copy {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  min-width: 0;
-}
+    .brand-subtitle {
+      display: block;
+      color: var(--muted);
+      font-size: .82rem;
+      margin-top: 4px;
+      line-height: 1.2;
+    }
 
-.brand-wordmark {
-  width: auto;
-  height: 32px;
-  max-width: 220px;
-  object-fit: contain;
-  display: block;
-}
-
-.brand-subtitle {
-  display: block;
-  color: var(--muted);
-  font-size: .82rem;
-  margin-top: 4px;
-  line-height: 1.2;
-}
-
-.brand-subtitle {
-  display: block;
-  color: var(--muted);
-  font-size: .8rem;
-  margin-top: 4px;
-  line-height: 1.2;
-}
-
-@media (max-width: 560px) {
-  .brand-wordmark {
-    height: 120px;
-    max-width: 140px;
-  }
-
-  .brand-mark-wrap,
-  .brand-mark-img {
-    width: 150px;
-    height: 150px;
-    flex-basis: 150px;
-  }
-}
     .nav {
       display: flex;
       align-items: center;
       gap: 12px;
       flex-wrap: wrap;
+      justify-content: flex-end;
     }
 
     .nav-link {
@@ -306,51 +271,44 @@
 
     .hero { padding: 74px 0 32px; }
 
-    ..hero-wrap {
-  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
-}
-  align-items: start;
-}
+    .hero-wrap {
+      border-radius: 20px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 24px;
+      align-items: start;
+    }
 
-.hero-wrap > div,
-.hero-wrap > aside {
-  min-width: 0;
-}
+    .hero-wrap > div,
+    .hero-wrap > aside {
+      min-width: 0;
+    }
 
-.hero-side {
-  display: grid;
-  gap: 14px;
-  min-width: 0;
-}
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(0,229,160,.18);
+      color: #9eeddb;
+      background: rgba(0,229,160,.05);
+      font: 700 .78rem 'Syne', sans-serif;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
 
-.side-card {
-  padding: 18px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,.07);
-  background: rgba(255,255,255,.025);
-  min-width: 0;
-}
-
-.side-card strong {
-  display: block;
-  color: #fff;
-  margin-bottom: 8px;
-  font-size: 1rem;
-  line-height: 1.35;
-}
-
-.side-card span {
-  display: block;
-  color: var(--muted);
-  line-height: 1.7;
-  font-size: .95rem;
-  white-space: normal;
-  word-break: normal;
-  overflow-wrap: break-word;
-  max-width: 100%;
-}
-
-}
+    .eyebrow::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--mint);
+      box-shadow: 0 0 18px rgba(0,229,160,.7);
+    }
 
     h1, h2, h3, h4, p { margin: 0; }
 
@@ -366,7 +324,7 @@
       font-size: 1.08rem;
       line-height: 1.85;
       color: #c0d0ec;
-      max-width: 98px;
+      max-width: 760px;
     }
 
     .hero-note {
@@ -374,20 +332,29 @@
       color: var(--muted);
       font-size: .98rem;
       line-height: 1.8;
-      max-width: 72px;
+      max-width: 720px;
     }
 
     .hero-logo-row {
       margin-top: 18px;
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       color: #8fbcd4;
       font-size: .84rem;
       letter-spacing: .04em;
+      min-width: 0;
+      flex-wrap: wrap;
     }
 
-    .hero-logo-row svg { width: 18px; height: 18px; }
+    .hero-logo-row img {
+      width: auto;
+      height: 118px;
+      max-width: min(36vw, 380px);
+      object-fit: contain;
+      display: block;
+      flex: 0 0 auto;
+    }
 
     .hero-actions {
       display: flex;
@@ -399,6 +366,7 @@
     .hero-side {
       display: grid;
       gap: 14px;
+      min-width: 0;
     }
 
     .side-card {
@@ -406,6 +374,7 @@
       border-radius: 14px;
       border: 1px solid rgba(255,255,255,.07);
       background: rgba(255,255,255,.025);
+      min-width: 0;
     }
 
     .side-card strong {
@@ -413,13 +382,18 @@
       color: #fff;
       margin-bottom: 8px;
       font-size: 1rem;
+      line-height: 1.35;
     }
 
     .side-card span {
       display: block;
       color: var(--muted);
-      line-height: 1.65;
-      font-size: .92rem;
+      line-height: 1.7;
+      font-size: .95rem;
+      white-space: normal;
+      overflow-wrap: break-word;
+      word-break: normal;
+      max-width: 100%;
     }
 
     .section { padding: 34px 0; }
@@ -455,14 +429,14 @@
       max-width: 740px;
     }
 
-    .grid-3, .grid-4, .grid-2 {
+    .grid-2, .grid-3, .grid-4 {
       display: grid;
       gap: 16px;
     }
 
+    .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
     .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
     .grid-4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
-    .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
 
     .module {
       padding: 22px;
@@ -599,6 +573,22 @@
       font-size: .92rem;
     }
 
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--muted);
+    }
+
+    .footer-brand img {
+      width: auto;
+      height: 118px;
+      max-width: 260px;
+      object-fit: contain;
+      display: block;
+      flex: 0 0 auto;
+    }
+
     .footer-links {
       display: flex;
       align-items: center;
@@ -612,15 +602,6 @@
     }
 
     .footer-links a:hover { color: #fff; }
-
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--muted);
-    }
-
-    .footer-brand svg { width: 18px; height: 18px; }
 
     @media (max-width: 1100px) {
       .hero-wrap,
@@ -648,6 +629,17 @@
       .nav { justify-content: flex-start; }
       .hero { padding-top: 46px; }
       .hero-wrap, .cta-card { padding: 24px; }
+
+      .brand-wordmark,
+      .hero-logo-row img {
+        height: 86px;
+        max-width: 300px;
+      }
+
+      .footer-brand img {
+        height: 86px;
+        max-width: 220px;
+      }
     }
 
     @media (max-width: 560px) {
@@ -659,6 +651,17 @@
 
       .btn { width: 100%; }
       .hero-actions { gap: 10px; }
+
+      .brand-wordmark,
+      .hero-logo-row img {
+        height: 64px;
+        max-width: 220px;
+      }
+
+      .footer-brand img {
+        height: 64px;
+        max-width: 180px;
+      }
     }
   </style>
 </head>
@@ -667,33 +670,19 @@
     <header class="topbar">
       <div class="topbar-inner">
         <a class="brand" href="/">
-  <img class="brand-wordmark" src="/wordmark-logo.png" alt="COGNATIVE wordmark" />
-            <svg viewBox="0 0 32 32" fill="none">
-              <circle cx="16" cy="16" r="13" stroke="url(#g1)" stroke-width="2"></circle>
-              <circle cx="16" cy="11.5" r="3" fill="#00E5A0"></circle>
-              <circle cx="10" cy="20" r="2" fill="#00B4D8"></circle>
-              <circle cx="22" cy="20" r="2" fill="#7C3AED"></circle>
-              <line x1="16" y1="11.5" x2="10" y2="20" stroke="#00E5A0" stroke-opacity=".5"></line>
-              <line x1="16" y1="11.5" x2="22" y2="20" stroke="#7C3AED" stroke-opacity=".5"></line>
-              <defs>
-                <linearGradient id="g1" x1="0" y1="0" x2="32" y2="32">
-                  <stop stop-color="#00E5A0"></stop>
-                  <stop offset="1" stop-color="#7C3AED"></stop>
-                </linearGradient>
-              </defs>
-            </svg>
-          </span>
-          <span>
+          <img class="brand-wordmark" src="/wordmark.png" alt="COGNATIVE wordmark" />
+          <span class="brand-copy">
+            <span class="brand-subtitle">Intelligence, unlocked.</span>
           </span>
         </a>
 
         <nav class="nav" aria-label="Primary navigation">
           <a class="nav-link" href="/">Home</a>
-          <a class="nav-link" href="/demo-flow">Demo</a>
+          <a class="nav-link" href="/demo-flow#demoRuntime">Demo</a>
           <a class="nav-link" href="#definition">Definition</a>
           <a class="nav-link" href="#why-it-matters">Why it matters</a>
-          <a class="btn btn-secondary" href="/demo-flow">Try Demo</a>
-          <a class="btn btn-primary" href="#final-cta">Get Early Access</a>
+          <a class="btn btn-secondary" href="/demo-flow#demoRuntime">Try Demo</a>
+          <a class="btn btn-primary" href="/#final-cta">Get Early Access</a>
         </nav>
       </div>
     </header>
@@ -715,23 +704,12 @@
               </p>
 
               <div class="hero-logo-row">
-                <svg viewBox="0 0 32 32" fill="none">
-                  <circle cx="16" cy="16" r="13" stroke="url(#g2)" stroke-width="2"></circle>
-                  <circle cx="16" cy="11.5" r="3" fill="#00E5A0"></circle>
-                  <circle cx="10" cy="20" r="2" fill="#00B4D8"></circle>
-                  <circle cx="22" cy="20" r="2" fill="#7C3AED"></circle>
-                  <defs>
-                    <linearGradient id="g2" x1="0" y1="0" x2="32" y2="32">
-                      <stop stop-color="#00E5A0"></stop>
-                      <stop offset="1" stop-color="#7C3AED"></stop>
-                    </linearGradient>
-                  </defs>
-                </svg>
-                COGNATIVE™ AI Thinking Platform
+                <img src="/wordmark.png" alt="COGNATIVE wordmark" />
+                <span>COGNATIVE™ AI Thinking Platform</span>
               </div>
 
               <div class="hero-actions">
-                <a class="btn btn-primary" href="/demo-flow">Try the Thinking Experience</a>
+                <a class="btn btn-primary" href="/demo-flow#demoRuntime">Try the Thinking Experience</a>
                 <a class="btn btn-secondary" href="/#final-cta">Get Early Access</a>
               </div>
             </div>
@@ -739,11 +717,11 @@
             <aside class="hero-side">
               <div class="side-card">
                 <strong>Category definition</strong>
-                <span>An AI Thinking Platform develops the quality of the mind behind the answer.</span>
+                <span>An AI Thinking Platform is designed to strengthen how people think, learn, decide, and execute. It does more than return answers. It develops reasoning quality, executive functioning, and the visible path behind strong judgment.</span>
               </div>
               <div class="side-card">
-                <strong>Core outcomes</strong>
-                <span>Better reasoning, stronger executive functioning, clearer decisions, stronger execution.</span>
+                <strong>Core thesis</strong>
+                <span>AI generates output. COGNATIVE™ develops intelligence. Most tools optimize output. COGNATIVE™ optimizes thinking.</span>
               </div>
               <div class="side-card">
                 <strong>Why now</strong>
@@ -953,8 +931,8 @@
               </p>
             </div>
             <div class="cta-box">
-              <a class="btn btn-primary" href="/demo-flow">Try the Thinking Experience</a>
-              <a class="btn btn-secondary" href="mailto:hello@cognative.app?subject=COGNATIVE%20AI%20Thinking%20Platform">Request Early Access</a>
+              <a class="btn btn-primary" href="/demo-flow#demoRuntime">Try the Thinking Experience</a>
+              <a class="btn btn-secondary" href="/#final-cta">Request Early Access</a>
               <div class="cta-note">
                 AI Thinking Platform. Decision intelligence. Executive functioning. Structured reasoning. COGNATIVE™ is building the category.
               </div>
@@ -967,32 +945,16 @@
     <footer>
       <div class="footer-inner">
         <div class="footer-brand">
-          <svg viewBox="0 0 32 32" fill="none">
-            <circle cx="16" cy="16" r="13" stroke="url(#g3)" stroke-width="2"></circle>
-            <circle cx="16" cy="11.5" r="3" fill="#00E5A0"></circle>
-            <circle cx="10" cy="20" r="2" fill="#00B4D8"></circle>
-            <circle cx="22" cy="20" r="2" fill="#7C3AED"></circle>
-            <defs>
-              <linearGradient id="g3" x1="0" y1="0" x2="32" y2="32">
-                <stop stop-color="#00E5A0"></stop>
-                <stop offset="1" stop-color="#7C3AED"></stop>
-              </linearGradient>
-            </defs>
-          </svg>
-          <span>© <span id="year"></span> COGNATIVE™</span>
+          <img src="/wordmark.png" alt="COGNATIVE wordmark" />
         </div>
 
         <div class="footer-links">
           <a href="/">Home</a>
-          <a href="/demo-flow">Demo</a>
+          <a href="/demo-flow#demoRuntime">Demo</a>
           <a href="/ai-thinking-platform">AI Thinking Platform</a>
         </div>
       </div>
     </footer>
   </div>
-
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
