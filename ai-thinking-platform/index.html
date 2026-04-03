@@ -307,13 +307,51 @@
     .hero { padding: 74px 0 32px; }
 
     .hero-wrap {
-      border-radius: 20px;
-      padding: 34px;
-      display: grid;
-      grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
-      gap: 24px;
-      align-items: center;
-    }
+  border-radius: 20px;
+  padding: 34px;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.hero-wrap > div,
+.hero-wrap > aside {
+  min-width: 0;
+}
+
+.hero-side {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+
+.side-card {
+  padding: 18px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,.07);
+  background: rgba(255,255,255,.025);
+  min-width: 0;
+}
+
+.side-card strong {
+  display: block;
+  color: #fff;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  line-height: 1.35;
+}
+
+.side-card span {
+  display: block;
+  color: var(--muted);
+  line-height: 1.7;
+  font-size: .95rem;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  max-width: 100%;
+}
 
     .eyebrow {
       display: inline-flex;
